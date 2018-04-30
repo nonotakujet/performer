@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A5A302B20976B3F00D11889 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5A302A20976B3F00D11889 /* AVFoundation.framework */; };
+		6A5A302D20976B4600D11889 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5A302C20976B4600D11889 /* AVKit.framework */; };
+		6A5A303020976C8F00D11889 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 6A5A302F20976C8F00D11889 /* Assets */; };
 		6AB371D02097167A00DD2B38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB371CF2097167A00DD2B38 /* AppDelegate.swift */; };
 		6AB371D22097167A00DD2B38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB371D12097167A00DD2B38 /* ViewController.swift */; };
 		6AB371D52097167A00DD2B38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AB371D32097167A00DD2B38 /* Main.storyboard */; };
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A5A302A20976B3F00D11889 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6A5A302C20976B4600D11889 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		6A5A302F20976C8F00D11889 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		6AB371CC2097167A00DD2B38 /* performer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = performer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB371CF2097167A00DD2B38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB371D12097167A00DD2B38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A5A302D20976B4600D11889 /* AVKit.framework in Frameworks */,
+				6A5A302B20976B3F00D11889 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +82,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A5A302920976B3F00D11889 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A5A302C20976B4600D11889 /* AVKit.framework */,
+				6A5A302A20976B3F00D11889 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6AB371C32097167900DD2B38 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +98,7 @@
 				6AB371E32097167C00DD2B38 /* performerTests */,
 				6AB371EE2097167C00DD2B38 /* performerUITests */,
 				6AB371CD2097167A00DD2B38 /* Products */,
+				6A5A302920976B3F00D11889 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +119,7 @@
 				6AB371D32097167A00DD2B38 /* Main.storyboard */,
 				6AB371D62097167C00DD2B38 /* Assets.xcassets */,
 				6AB371D82097167C00DD2B38 /* LaunchScreen.storyboard */,
+				6A5A302F20976C8F00D11889 /* Assets */,
 				6AB371DB2097167C00DD2B38 /* Info.plist */,
 			);
 			path = performer;
@@ -238,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AB371DA2097167C00DD2B38 /* LaunchScreen.storyboard in Resources */,
+				6A5A303020976C8F00D11889 /* Assets in Resources */,
 				6AB371D72097167C00DD2B38 /* Assets.xcassets in Resources */,
 				6AB371D52097167A00DD2B38 /* Main.storyboard in Resources */,
 			);
@@ -438,14 +458,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2DRLA99267;
 				INFOPLIST_FILE = performer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = visioooon.performer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -455,14 +480,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2DRLA99267;
 				INFOPLIST_FILE = performer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = visioooon.performer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

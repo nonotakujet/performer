@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // VideoPlayerの生成.
-        if let bundlePath = Bundle.main.path(forResource: "Assets/baseball1", ofType: "mov") {
+        if let bundlePath = Bundle.main.path(forResource: "Assets/Movies/baseball1", ofType: "mov") {
             
             // Player.
             videoPlayer = AVPlayer(url: URL(fileURLWithPath: bundlePath))

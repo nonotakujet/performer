@@ -12,8 +12,10 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
-    // AVPlayer.
+    // VideoPlayer.
     var videoPlayer : AVPlayer!
+    // AudioPlayer.
+    var audioPlayer : AVAudioPlayer!
     
     override func viewDidLoad() {
 
@@ -21,34 +23,59 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // VideoPlayerの生成.
-        if let bundlePath = Bundle.main.path(forResource: "Assets/baseball1", ofType: "mov") {
-            
-            // Player.
-            videoPlayer = AVPlayer(url: URL(fileURLWithPath: bundlePath))
-            
-            // Viewを生成.
-            let videoPlayerView = AVPlayerView(frame: self.view.bounds)
-            
-            // UIViewのレイヤーをAVPlayerLayerにする.
-            let playerLayer = videoPlayerView.layer as! AVPlayerLayer
-            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
-            playerLayer.player = videoPlayer
-            self.view.layer.addSublayer(playerLayer)
-            
-            // 動画の再生ボタンを生成.
-            let startButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-            startButton.layer.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.maxY - 50)
-            startButton.layer.masksToBounds = true
-            startButton.layer.cornerRadius = 20.0
-            startButton.backgroundColor = UIColor.orange
-            startButton.setTitle("Start", for: UIControlState.normal)
-            startButton.addTarget(self, action: #selector(self.onStartButtonClick), for: UIControlEvents.touchUpInside)
-            self.view.addSubview(startButton)
-            
+        if let videoBundlePath = Bundle.main.path(forResource: "Assets/Movies/baseball1", ofType: "mov") {
+            videoPlayer = AVPlayer(url: URL(fileURLWithPath: videoBundlePath))
         } else {
-            print("no such file")
+            print("not found movie file.")
             return
-        }        
+        }
+        
+        // AudioPlayerの生成
+        if let soundBundlePath = Bundle.main.path(forResource: "Assets/Sounds/cheer", ofType: "mp3") {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundBundlePath))
+                audioPlayer.volume = 0.5
+                audioPlayer.prepareToPlay()
+            } catch {
+                print("failed audio player instantiate.")
+                return
+            }
+        } else {
+            print("not found audio file.")
+            return
+        }
+        
+        // Viewを生成.
+        let videoPlayerView = AVPlayerView(frame: self.view.bounds)
+        
+        // UIViewのレイヤーをAVPlayerLayerにする.
+        let playerLayer = videoPlayerView.layer as! AVPlayerLayer
+        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+        playerLayer.player = videoPlayer
+        self.view.layer.addSublayer(playerLayer)
+        
+        // 動画の再生ボタンを生成.
+        let startButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        startButton.layer.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.maxY - 50)
+        startButton.layer.masksToBounds = true
+        startButton.layer.cornerRadius = 20.0
+        startButton.backgroundColor = UIColor.orange
+        startButton.tag = 1
+        startButton.setTitle("Start", for: UIControlState.normal)
+        startButton.addTarget(self, action: #selector(self.onStartButtonClick), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(startButton)
+
+        // seボタンを生成.
+        let seButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        seButton.layer.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.maxY - 50)
+        seButton.layer.masksToBounds = true
+        seButton.layer.cornerRadius = 20.0
+        seButton.backgroundColor = UIColor.orange
+        seButton.tag = 2
+        seButton.setTitle("拍手", for: UIControlState.normal)
+        seButton.addTarget(self, action: #selector(self.onStartButtonClick), for: UIControlEvents.touchUpInside)
+        seButton.isHidden = true; // as default.
+        self.view.addSubview(seButton)
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,12 +84,20 @@ class ViewController: UIViewController {
     }
     
     @objc func onStartButtonClick(sender: UIButton) {
-        if sender.titleLabel?.text == "Start" {
+
+        // startボタン.
+        if sender.tag == 1 {
             videoPlayer.play()
-            sender.setTitle("Stop", for: UIControlState.normal)
-        } else {
-            videoPlayer.pause()
-            sender.setTitle("Start", for: UIControlState.normal)
+            self.view.viewWithTag(1)?.isHidden = true  // startボタンをinvisible
+            self.view.viewWithTag(2)?.isHidden = false // seボタンをvisible
+            return
+        }
+        
+        // seボタン
+        if sender.tag == 2 {
+            audioPlayer.currentTime = 0
+            audioPlayer.play()
+            return
         }
     }
 }

@@ -1,6 +1,8 @@
 //
-//  ViewController.swift
+//  MovieViewController.swift
 //  performer
+//
+//  MovieシーンのViewController.
 //
 //  Created by Taku Nonomura on 2018/04/30.
 //  Copyright © 2018年 visioooon. All rights reserved.
@@ -10,7 +12,11 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class MovieViewController: UIViewController {
+    
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var reactionView: UIStackView!
 
     // VideoPlayer.
     var videoPlayer : AVPlayer!
@@ -54,17 +60,13 @@ class ViewController: UIViewController {
         playerLayer.player = videoPlayer
         self.view.layer.addSublayer(playerLayer)
         
-        // 動画の再生ボタンを生成.
-        let startButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        startButton.layer.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.maxY - 50)
-        startButton.layer.masksToBounds = true
-        startButton.layer.cornerRadius = 20.0
-        startButton.backgroundColor = UIColor.orange
-        startButton.tag = 1
-        startButton.setTitle("Start", for: UIControlState.normal)
-        startButton.addTarget(self, action: #selector(self.onStartButtonClick), for: UIControlEvents.touchUpInside)
-        self.view.addSubview(startButton)
+        // playボタンのcallback登録.
+        playButton.addTarget(self, action: #selector(self.onPlayButtonClick), for: UIControlEvents.touchUpInside)
 
+        // backボタンのcallback登録.
+        backButton.addTarget(self, action: #selector(self.onBackButtonClick), for: UIControlEvents.touchUpInside)
+        
+        /*
         // seボタンを生成.
         let seButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         seButton.layer.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.maxY - 50)
@@ -76,6 +78,7 @@ class ViewController: UIViewController {
         seButton.addTarget(self, action: #selector(self.onStartButtonClick), for: UIControlEvents.touchUpInside)
         seButton.isHidden = true; // as default.
         self.view.addSubview(seButton)
+         */
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,22 +86,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func onStartButtonClick(sender: UIButton) {
-
-        // startボタン.
-        if sender.tag == 1 {
-            videoPlayer.play()
-            self.view.viewWithTag(1)?.isHidden = true  // startボタンをinvisible
-            self.view.viewWithTag(2)?.isHidden = false // seボタンをvisible
-            return
-        }
-        
-        // seボタン
-        if sender.tag == 2 {
-            audioPlayer.currentTime = 0
-            audioPlayer.play()
-            return
-        }
+    /// playボタンが押された時のcallback.
+    @objc func onPlayButtonClick(sender: UIButton) {
+        videoPlayer.play()
+        playButton.isHidden = true
+        reactionView.isHidden = false // reactionボタンたちを表示状態にする.
+    }
+    
+    /// backボタンが押された時のcallback.
+    @objc func onBackButtonClick(sender: UIButton) {
+        videoPlayer.pause()
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

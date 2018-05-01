@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         startButton.addTarget(self, action: #selector(self.onStartButtonClick), for: UIControlEvents.touchUpInside)
         self.view.addSubview(startButton)
 
-        // BANZAIボタンを生成.
+        // seボタンを生成.
         let seButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         seButton.layer.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.maxY - 50)
         seButton.layer.masksToBounds = true
@@ -89,11 +89,11 @@ class ViewController: UIViewController {
         if sender.tag == 1 {
             videoPlayer.play()
             self.view.viewWithTag(1)?.isHidden = true  // startボタンをinvisible
-            self.view.viewWithTag(2)?.isHidden = false // banzaiボタンをvisible
+            self.view.viewWithTag(2)?.isHidden = false // seボタンをvisible
             return
         }
         
-        // banzaiボタン
+        // seボタン
         if sender.tag == 2 {
             audioPlayer.currentTime = 0
             audioPlayer.play()

@@ -1,6 +1,8 @@
 //
-//  ViewController.swift
+//  MovieViewController.swift
 //  performer
+//
+//  MovieシーンのViewController.
 //
 //  Created by Taku Nonomura on 2018/04/30.
 //  Copyright © 2018年 visioooon. All rights reserved.
@@ -10,7 +12,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class MovieViewController: UIViewController {
 
     // VideoPlayer.
     var videoPlayer : AVPlayer!

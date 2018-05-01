@@ -17,12 +17,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // ボタンを生成
-        let button = UIButton(type: .system);
-        button.setTitle("Play", for: .normal);
-        button.addTarget(self, action: #selector(self.playMovieFromProjectBundle), for: .touchUpInside);
-        button.sizeToFit();
-        button.center = self.view.center;
-        self.view.addSubview(button);
+        let button = UIButton(type: .system)
+        button.setTitle("Play", for: .normal)
+        button.addTarget(self, action: #selector(self.playMovieFromProjectBundle), for: .touchUpInside)
+        button.sizeToFit()
+        button.center = self.view.center
+        self.view.addSubview(button)
     }
 
     // アプリにBundleされたMovieFileを再生します.
@@ -33,7 +33,11 @@ class ViewController: UIViewController {
             
             // 動画プレイヤーの用意
             let playerController = AVPlayerViewController()
+            playerController.showsPlaybackControls = false;
             playerController.player = videoPlayer
+            
+            // AVPlayerViewControllerへの遷移処理.
+            // 遷移完了で、再生.
             self.present(playerController, animated: true, completion: {
                 videoPlayer.play()
             })

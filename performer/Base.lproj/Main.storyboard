@@ -43,9 +43,62 @@
                     <view key="view" contentMode="scaleToFill" id="2vv-cO-6dE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgt-8Y-Xxn" userLabel="BackButton">
+                                <rect key="frame" x="10" y="30" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="&lt; Back"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-4l-cho" userLabel="PlayButton">
+                                <rect key="frame" x="168" y="601" width="40" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.54091830077994163" blue="0.29540937129513412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="46h-tz-vFq"/>
+                                    <constraint firstAttribute="width" constant="40" id="qsk-cW-P80"/>
+                                </constraints>
+                                <state key="normal" title="▶︎">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Wyq-aP-kon" userLabel="Reaction View">
+                                <rect key="frame" x="50" y="601" width="274" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIE-XB-Ihq">
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-9w-VqO">
+                                        <rect key="frame" x="76" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-9J-MfZ">
+                                        <rect key="frame" x="152" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmI-IO-2Th">
+                                        <rect key="frame" x="228" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Wyq-aP-kon" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="8ur-uf-Vss"/>
+                            <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="AvL-ZB-5HC"/>
+                            <constraint firstItem="X8O-4l-cho" firstAttribute="top" secondItem="Wyq-aP-kon" secondAttribute="top" id="DZA-Pr-L57"/>
+                            <constraint firstItem="Wyq-aP-kon" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="Dcc-G9-Hrh"/>
+                            <constraint firstItem="X8O-4l-cho" firstAttribute="top" secondItem="Owp-kj-x6m" secondAttribute="top" constant="581" id="Z7J-1a-T2z"/>
+                            <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="qjL-G7-3SQ"/>
+                            <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="yQ9-go-alu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Owp-kj-x6m"/>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="Cgt-8Y-Xxn" id="nQy-Xl-6ls"/>
+                        <outlet property="playButton" destination="X8O-4l-cho" id="aCE-2w-2Sk"/>
+                        <outlet property="reactionView" destination="Wyq-aP-kon" id="Mze-SU-2qa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSc-cW-LmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

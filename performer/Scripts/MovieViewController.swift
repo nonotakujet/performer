@@ -12,7 +12,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class MovieViewController: UIViewController {
+class MovieViewController: UIViewController, ButtonTappedDelegate {
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
@@ -68,7 +68,8 @@ class MovieViewController: UIViewController {
         backButton.addTarget(self, action: #selector(self.onBackButtonClick), for: UIControlEvents.touchUpInside)
 
         // ReactionViewを追加.
-        // self.view.addSubview(reactionView)
+        reactionView.activate()
+        reactionView.buttonDelegate = self
         reactionViewRoot.addSubview(reactionView)
     }
 
@@ -88,6 +89,11 @@ class MovieViewController: UIViewController {
     @objc func onBackButtonClick(sender: UIButton) {
         videoPlayer.pause()
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    /// reactionViewのbuttonのcallback.
+    func onButton(index: Int) {
+        print("index: \(index)")
     }
 }
 

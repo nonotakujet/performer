@@ -8,12 +8,20 @@
 
 import UIKit
 
-class ReactionView : UIView {
+protocol ButtonTappedDelegate : class {
+    func onButton(index : Int)
+}
 
+class ReactionView : UIView {
+    
+    /// outlet
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
+    
+    /// button delegate
+    weak var buttonDelegate : ButtonTappedDelegate? = nil
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,7 +31,16 @@ class ReactionView : UIView {
         super.init(coder: aDecoder)
     }
 
-    func setHidden(isHidden : Bool) {
-        self.isHidden = isHidden
+    func activate() {
+        // ボタンのcallback登録.
+        button1.addTarget(self, action: #selector(self.onButon), for: UIControlEvents.touchUpInside)
+        button2.addTarget(self, action: #selector(self.onButon), for: UIControlEvents.touchUpInside)
+        button3.addTarget(self, action: #selector(self.onButon), for: UIControlEvents.touchUpInside)
+        button4.addTarget(self, action: #selector(self.onButon), for: UIControlEvents.touchUpInside)
+    }
+
+    /// ボタンが押された時のcallback.
+    @objc func onButon(sender: UIButton) {
+        self.buttonDelegate?.onButton(index: sender.tag)
     }
 }

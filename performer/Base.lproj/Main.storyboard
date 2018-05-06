@@ -60,47 +60,71 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Wyq-aP-kon" userLabel="Reaction View">
-                                <rect key="frame" x="50" y="601" width="274" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIE-XB-Ihq">
-                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-9w-VqO">
-                                        <rect key="frame" x="76" y="0.0" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-9J-MfZ">
-                                        <rect key="frame" x="152" y="0.0" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmI-IO-2Th">
-                                        <rect key="frame" x="228" y="0.0" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6Z-Ej-hLh" userLabel="ReactionViewRoot">
+                                <rect key="frame" x="17" y="571" width="340" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Wyq-aP-kon" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="8ur-uf-Vss"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="AvL-ZB-5HC"/>
-                            <constraint firstItem="X8O-4l-cho" firstAttribute="top" secondItem="Wyq-aP-kon" secondAttribute="top" id="DZA-Pr-L57"/>
-                            <constraint firstItem="Wyq-aP-kon" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="Dcc-G9-Hrh"/>
+                            <constraint firstItem="f6Z-Ej-hLh" firstAttribute="top" secondItem="2vv-cO-6dE" secondAttribute="top" constant="571" id="RAi-uq-JC3"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="top" secondItem="Owp-kj-x6m" secondAttribute="top" constant="581" id="Z7J-1a-T2z"/>
+                            <constraint firstItem="f6Z-Ej-hLh" firstAttribute="leading" secondItem="Owp-kj-x6m" secondAttribute="leading" constant="17" id="dkb-5y-uf1"/>
+                            <constraint firstItem="f6Z-Ej-hLh" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="oMt-KX-L1m"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="qjL-G7-3SQ"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="yQ9-go-alu"/>
+                            <constraint firstItem="f6Z-Ej-hLh" firstAttribute="bottom" secondItem="X8O-4l-cho" secondAttribute="bottom" id="zp8-nR-esX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Owp-kj-x6m"/>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="Cgt-8Y-Xxn" id="nQy-Xl-6ls"/>
                         <outlet property="playButton" destination="X8O-4l-cho" id="aCE-2w-2Sk"/>
-                        <outlet property="reactionView" destination="Wyq-aP-kon" id="Mze-SU-2qa"/>
+                        <outlet property="reactionView" destination="djG-z3-PSE" id="Uu2-Ep-bPy"/>
+                        <outlet property="reactionViewRoot" destination="f6Z-Ej-hLh" id="5y2-rC-m8x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSc-cW-LmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="djG-z3-PSE" userLabel="ReactionView" customClass="ReactionView" customModule="performer" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="340" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Wyq-aP-kon" userLabel="Reaction View">
+                            <rect key="frame" x="33" y="15" width="274" height="30"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIE-XB-Ihq">
+                                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-9w-VqO">
+                                    <rect key="frame" x="76" y="0.0" width="46" height="30"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-9J-MfZ">
+                                    <rect key="frame" x="152" y="0.0" width="46" height="30"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmI-IO-2Th">
+                                    <rect key="frame" x="228" y="0.0" width="46" height="30"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Wyq-aP-kon" firstAttribute="centerY" secondItem="djG-z3-PSE" secondAttribute="centerY" id="gCa-rX-xJs"/>
+                        <constraint firstItem="Wyq-aP-kon" firstAttribute="centerX" secondItem="djG-z3-PSE" secondAttribute="centerX" id="n3b-Ur-2hL"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="dS5-nR-qGR"/>
+                    <connections>
+                        <outlet property="button1" destination="PIE-XB-Ihq" id="zdL-VL-PoG"/>
+                        <outlet property="button2" destination="ZEm-9w-VqO" id="DT7-S6-dGl"/>
+                        <outlet property="button3" destination="2qs-9J-MfZ" id="KBe-0D-dW7"/>
+                        <outlet property="button4" destination="VmI-IO-2Th" id="Mmr-lH-F1u"/>
+                    </connections>
+                </view>
             </objects>
             <point key="canvasLocation" x="1350" y="46"/>
         </scene>

@@ -12,12 +12,13 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class MovieViewController: UIViewController {
+class MovieViewController: UIViewController, ButtonTappedDelegate {
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var reactionView: UIStackView!
-
+    @IBOutlet weak var reactionViewRoot: UIView!
+    @IBOutlet var reactionView: ReactionView!
+    
     // VideoPlayer.
     var videoPlayer : AVPlayer!
     // AudioPlayer.
@@ -58,27 +59,18 @@ class MovieViewController: UIViewController {
         let playerLayer = videoPlayerView.layer as! AVPlayerLayer
         playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         playerLayer.player = videoPlayer
-        self.view.layer.addSublayer(playerLayer)
-        
+        self.view.layer.insertSublayer(playerLayer, at: 0)
+
         // playボタンのcallback登録.
         playButton.addTarget(self, action: #selector(self.onPlayButtonClick), for: UIControlEvents.touchUpInside)
 
         // backボタンのcallback登録.
         backButton.addTarget(self, action: #selector(self.onBackButtonClick), for: UIControlEvents.touchUpInside)
-        
-        /*
-        // seボタンを生成.
-        let seButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        seButton.layer.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.maxY - 50)
-        seButton.layer.masksToBounds = true
-        seButton.layer.cornerRadius = 20.0
-        seButton.backgroundColor = UIColor.orange
-        seButton.tag = 2
-        seButton.setTitle("拍手", for: UIControlState.normal)
-        seButton.addTarget(self, action: #selector(self.onStartButtonClick), for: UIControlEvents.touchUpInside)
-        seButton.isHidden = true; // as default.
-        self.view.addSubview(seButton)
-         */
+
+        // ReactionViewを追加.
+        reactionView.activate()
+        reactionView.buttonDelegate = self
+        reactionViewRoot.addSubview(reactionView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,13 +82,18 @@ class MovieViewController: UIViewController {
     @objc func onPlayButtonClick(sender: UIButton) {
         videoPlayer.play()
         playButton.isHidden = true
-        reactionView.isHidden = false // reactionボタンたちを表示状態にする.
+        reactionViewRoot.isHidden = false
     }
     
     /// backボタンが押された時のcallback.
     @objc func onBackButtonClick(sender: UIButton) {
         videoPlayer.pause()
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    /// reactionViewのbuttonのcallback.
+    func onButton(index: Int) {
+        print("index: \(index)")
     }
 }
 

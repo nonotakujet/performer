@@ -58,7 +58,7 @@ class MovieViewController: UIViewController {
         let playerLayer = videoPlayerView.layer as! AVPlayerLayer
         playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         playerLayer.player = videoPlayer
-        self.view.layer.addSublayer(playerLayer)
+        self.view.layer.insertSublayer(playerLayer, at: 0)
         
         // playボタンのcallback登録.
         playButton.addTarget(self, action: #selector(self.onPlayButtonClick), for: UIControlEvents.touchUpInside)

@@ -101,8 +101,25 @@ class MovieViewController: UIViewController, ButtonTappedDelegate {
     
     /// reactionViewのbuttonのcallback.
     func onButton(index: Int) {
-        print("index: \(index)")
-        stampView.instantiateStamp()
+        var filePath = String()
+        switch index {
+        case 1:
+            filePath = "Assets/Icons/onpu.png"
+            break
+        case 2:
+            filePath = "Assets/Icons/onpu2.png"
+            break
+        case 3:
+            filePath = "Assets/Icons/fire.png"
+            break
+        case 4:
+            filePath = "Assets/Icons/good.png"
+            break
+        default:
+            filePath = "Assets/Icons/good.png"
+            break
+        }
+        stampView.instantiateStamp(filePath: filePath)
     }
 }
 

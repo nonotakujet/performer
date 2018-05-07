@@ -28,9 +28,9 @@ class StampView {
     }
     
     /// stampを生成します.
-    func instantiateStamp() {
+    func instantiateStamp(filePath: String) {
         image = UIImageView()
-        image.image = UIImage(named: "Assets/Icons/good.png")
+        image.image = UIImage(named: filePath)
         image.frame = CGRect(x:0, y:0, width:128, height:128)
         image.center = CGPoint(x:100, y:300)
         rootView.addSubview(image)

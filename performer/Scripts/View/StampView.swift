@@ -12,8 +12,6 @@ class StampView {
     
     // Stampの各ImageViewを管理するRootView
     var rootView: UIView!
-    // このViewで管理されるスタンプのUIImageView
-    var image : UIImageView!
 
     /// initializer.
     init() {
@@ -28,11 +26,26 @@ class StampView {
     }
     
     /// stampを生成します.
-    func instantiateStamp(filePath: String) {
-        image = UIImageView()
+    func instantiateStamp(filePath: String, posX: CGFloat) {
+
+        // imageViewの生成.
+        let image = UIImageView()
         image.image = UIImage(named: filePath)
+        image.alpha = 0
         image.frame = CGRect(x:0, y:0, width:128, height:128)
-        image.center = CGPoint(x:100, y:300)
+        image.center = CGPoint(x: posX, y: 400.0)
         rootView.addSubview(image)
+        
+        // animation
+        UIView.animate(
+            withDuration: 0.1,
+            animations: { image.alpha = 1.0 }
+        )
+        UIView.animate(
+            withDuration: 0.6,
+            delay: 0,
+            options: [ .curveEaseOut ],
+            animations: { image.center.y -= 300 },
+            completion: {_ in image.removeFromSuperview() })
     }
 }

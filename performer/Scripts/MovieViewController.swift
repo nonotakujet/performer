@@ -100,7 +100,7 @@ class MovieViewController: UIViewController, ButtonTappedDelegate {
     }
     
     /// reactionViewのbuttonのcallback.
-    func onButton(index: Int) {
+    func onButton(index: Int, posX: CGFloat) {
         var filePath = String()
         switch index {
         case 1:
@@ -119,7 +119,7 @@ class MovieViewController: UIViewController, ButtonTappedDelegate {
             filePath = "Assets/Icons/good.png"
             break
         }
-        stampView.instantiateStamp(filePath: filePath)
+        stampView.instantiateStamp(filePath: filePath, posX: posX)
     }
 }
 

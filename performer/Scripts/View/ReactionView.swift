@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ButtonTappedDelegate : class {
-    func onButton(index : Int)
+    func onButton(index : Int, posX: CGFloat)
 }
 
 class ReactionView : UIView {
@@ -41,6 +41,6 @@ class ReactionView : UIView {
 
     /// ボタンが押された時のcallback.
     @objc func onButon(sender: UIButton) {
-        self.buttonDelegate?.onButton(index: sender.tag)
+        self.buttonDelegate?.onButton(index: sender.tag, posX: sender.center.x)
     }
 }

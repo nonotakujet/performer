@@ -14,6 +14,7 @@ import AVFoundation
 
 class MovieViewController: UIViewController, ButtonTappedDelegate {
     
+    /// outlet.
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var reactionViewRoot: UIView!
@@ -23,6 +24,9 @@ class MovieViewController: UIViewController, ButtonTappedDelegate {
     var videoPlayer : AVPlayer!
     // AudioPlayer.
     var audioPlayer : AVAudioPlayer!
+    
+    // stampView
+    var stampView : StampView!
     
     override func viewDidLoad() {
 
@@ -71,6 +75,10 @@ class MovieViewController: UIViewController, ButtonTappedDelegate {
         reactionView.activate()
         reactionView.buttonDelegate = self
         reactionViewRoot.addSubview(reactionView)
+        
+        // stampViewを追加.
+        stampView = StampView()
+        self.view.addSubview(stampView.GetViewNode())
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,8 +100,26 @@ class MovieViewController: UIViewController, ButtonTappedDelegate {
     }
     
     /// reactionViewのbuttonのcallback.
-    func onButton(index: Int) {
-        print("index: \(index)")
+    func onButton(index: Int, posX: CGFloat) {
+        var filePath = String()
+        switch index {
+        case 1:
+            filePath = "Assets/Icons/onpu.png"
+            break
+        case 2:
+            filePath = "Assets/Icons/onpu2.png"
+            break
+        case 3:
+            filePath = "Assets/Icons/fire.png"
+            break
+        case 4:
+            filePath = "Assets/Icons/good.png"
+            break
+        default:
+            filePath = "Assets/Icons/good.png"
+            break
+        }
+        stampView.instantiateStamp(filePath: filePath, posX: posX)
     }
 }
 

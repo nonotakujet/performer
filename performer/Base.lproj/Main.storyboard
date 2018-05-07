@@ -44,8 +44,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgt-8Y-Xxn" userLabel="BackButton">
-                                <rect key="frame" x="10" y="30" width="48" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgt-8Y-Xxn" userLabel="BackButton">
+                                <rect key="frame" x="6" y="28" width="56" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="&lt; Back"/>
                             </button>
@@ -61,20 +61,20 @@
                                 </state>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6Z-Ej-hLh" userLabel="ReactionViewRoot">
-                                <rect key="frame" x="17" y="571" width="340" height="60"/>
+                                <rect key="frame" x="17" y="571" width="340" height="59"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="AvL-ZB-5HC"/>
+                            <constraint firstItem="Owp-kj-x6m" firstAttribute="bottom" secondItem="f6Z-Ej-hLh" secondAttribute="bottom" constant="37" id="Jcm-nE-iak"/>
                             <constraint firstItem="f6Z-Ej-hLh" firstAttribute="top" secondItem="2vv-cO-6dE" secondAttribute="top" constant="571" id="RAi-uq-JC3"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="top" secondItem="Owp-kj-x6m" secondAttribute="top" constant="581" id="Z7J-1a-T2z"/>
                             <constraint firstItem="f6Z-Ej-hLh" firstAttribute="leading" secondItem="Owp-kj-x6m" secondAttribute="leading" constant="17" id="dkb-5y-uf1"/>
                             <constraint firstItem="f6Z-Ej-hLh" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="oMt-KX-L1m"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="qjL-G7-3SQ"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="yQ9-go-alu"/>
-                            <constraint firstItem="f6Z-Ej-hLh" firstAttribute="bottom" secondItem="X8O-4l-cho" secondAttribute="bottom" id="zp8-nR-esX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Owp-kj-x6m"/>
                     </view>
@@ -87,35 +87,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSc-cW-LmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="djG-z3-PSE" userLabel="ReactionView" customClass="ReactionView" customModule="performer" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="340" height="60"/>
+                    <rect key="frame" x="0.0" y="0.0" width="340" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Wyq-aP-kon" userLabel="Reaction View">
-                            <rect key="frame" x="33" y="15" width="274" height="30"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Wyq-aP-kon" userLabel="Reaction View">
+                            <rect key="frame" x="12" y="13" width="316" height="64"/>
                             <subviews>
-                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIE-XB-Ihq">
-                                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                    <state key="normal" title="Button"/>
+                                <button opaque="NO" tag="1" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIE-XB-Ihq">
+                                    <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="64" id="h8d-42-Yuo"/>
+                                        <constraint firstAttribute="height" constant="64" id="r9c-sB-bwK"/>
+                                    </constraints>
+                                    <state key="normal" title="Button" image="onpu.png"/>
                                 </button>
-                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-9w-VqO">
-                                    <rect key="frame" x="76" y="0.0" width="46" height="30"/>
-                                    <state key="normal" title="Button"/>
+                                <button opaque="NO" tag="2" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-9w-VqO">
+                                    <rect key="frame" x="84" y="0.0" width="64" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="64" id="7D7-OY-Rsm"/>
+                                        <constraint firstAttribute="height" constant="64" id="u1q-94-U0J"/>
+                                    </constraints>
+                                    <state key="normal" title="Button" image="onpu2.png"/>
                                 </button>
-                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-9J-MfZ">
-                                    <rect key="frame" x="152" y="0.0" width="46" height="30"/>
-                                    <state key="normal" title="Button"/>
+                                <button opaque="NO" tag="3" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-9J-MfZ">
+                                    <rect key="frame" x="168" y="0.0" width="64" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="86V-E9-1GK"/>
+                                        <constraint firstAttribute="width" constant="64" id="ZCB-S2-ojr"/>
+                                    </constraints>
+                                    <state key="normal" title="Button" image="fire.png"/>
                                 </button>
-                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmI-IO-2Th">
-                                    <rect key="frame" x="228" y="0.0" width="46" height="30"/>
-                                    <state key="normal" title="Button"/>
+                                <button opaque="NO" tag="4" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmI-IO-2Th">
+                                    <rect key="frame" x="252" y="0.0" width="64" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="SRc-4q-Uwu"/>
+                                        <constraint firstAttribute="width" constant="64" id="UcA-NZ-vBO"/>
+                                    </constraints>
+                                    <state key="normal" title="Button" image="good.png"/>
                                 </button>
                             </subviews>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="Wyq-aP-kon" firstAttribute="centerY" secondItem="djG-z3-PSE" secondAttribute="centerY" id="gCa-rX-xJs"/>
-                        <constraint firstItem="Wyq-aP-kon" firstAttribute="centerX" secondItem="djG-z3-PSE" secondAttribute="centerX" id="n3b-Ur-2hL"/>
+                        <constraint firstItem="Wyq-aP-kon" firstAttribute="centerX" secondItem="djG-z3-PSE" secondAttribute="centerX" id="Mpu-d8-fm8"/>
+                        <constraint firstItem="Wyq-aP-kon" firstAttribute="centerY" secondItem="djG-z3-PSE" secondAttribute="centerY" id="qhF-0F-Rsd"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="dS5-nR-qGR"/>
                     <connections>
@@ -129,4 +145,10 @@
             <point key="canvasLocation" x="1350" y="46"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fire.png" width="128" height="128"/>
+        <image name="good.png" width="128" height="128"/>
+        <image name="onpu.png" width="128" height="128"/>
+        <image name="onpu2.png" width="128" height="128"/>
+    </resources>
 </document>

@@ -14,6 +14,10 @@
 		6A5A303820987B5700D11889 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5A303720987B5700D11889 /* TopViewController.swift */; };
 		6A5A303A209EFC9000D11889 /* ReactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5A3039209EFC9000D11889 /* ReactionView.swift */; };
 		6A5A303C20A0AA7900D11889 /* StampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5A303B20A0AA7900D11889 /* StampView.swift */; };
+		6A5A304A20A0B60A00D11889 /* onpu2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A5A304620A0B60A00D11889 /* onpu2.png */; };
+		6A5A304B20A0B60A00D11889 /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A5A304720A0B60A00D11889 /* fire.png */; };
+		6A5A304C20A0B60A00D11889 /* onpu.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A5A304820A0B60A00D11889 /* onpu.png */; };
+		6A5A304D20A0B60A00D11889 /* good.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A5A304920A0B60A00D11889 /* good.png */; };
 		6AB371D02097167A00DD2B38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB371CF2097167A00DD2B38 /* AppDelegate.swift */; };
 		6AB371D22097167A00DD2B38 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB371D12097167A00DD2B38 /* MovieViewController.swift */; };
 		6AB371D52097167A00DD2B38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AB371D32097167A00DD2B38 /* Main.storyboard */; };
@@ -48,6 +52,10 @@
 		6A5A303720987B5700D11889 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		6A5A3039209EFC9000D11889 /* ReactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionView.swift; sourceTree = "<group>"; };
 		6A5A303B20A0AA7900D11889 /* StampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampView.swift; sourceTree = "<group>"; };
+		6A5A304620A0B60A00D11889 /* onpu2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onpu2.png; sourceTree = "<group>"; };
+		6A5A304720A0B60A00D11889 /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
+		6A5A304820A0B60A00D11889 /* onpu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onpu.png; sourceTree = "<group>"; };
+		6A5A304920A0B60A00D11889 /* good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = good.png; sourceTree = "<group>"; };
 		6AB371CC2097167A00DD2B38 /* performer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = performer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB371CF2097167A00DD2B38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB371D12097167A00DD2B38 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +117,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		6A5A303D20A0B5BC00D11889 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6A5A304720A0B60A00D11889 /* fire.png */,
+				6A5A304920A0B60A00D11889 /* good.png */,
+				6A5A304820A0B60A00D11889 /* onpu.png */,
+				6A5A304620A0B60A00D11889 /* onpu2.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		6AB371C32097167900DD2B38 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +156,7 @@
 				6AB371D32097167A00DD2B38 /* Main.storyboard */,
 				6AB371D62097167C00DD2B38 /* Assets.xcassets */,
 				6AB371D82097167C00DD2B38 /* LaunchScreen.storyboard */,
+				6A5A303D20A0B5BC00D11889 /* Resources */,
 				6A5A302F20976C8F00D11889 /* Assets */,
 				6AB371DB2097167C00DD2B38 /* Info.plist */,
 			);
@@ -278,8 +298,12 @@
 			files = (
 				6AB371DA2097167C00DD2B38 /* LaunchScreen.storyboard in Resources */,
 				6A5A303020976C8F00D11889 /* Assets in Resources */,
+				6A5A304A20A0B60A00D11889 /* onpu2.png in Resources */,
 				6AB371D72097167C00DD2B38 /* Assets.xcassets in Resources */,
+				6A5A304D20A0B60A00D11889 /* good.png in Resources */,
 				6AB371D52097167A00DD2B38 /* Main.storyboard in Resources */,
+				6A5A304C20A0B60A00D11889 /* onpu.png in Resources */,
+				6A5A304B20A0B60A00D11889 /* fire.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

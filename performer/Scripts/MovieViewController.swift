@@ -11,6 +11,8 @@
 import UIKit
 import AVKit
 import AVFoundation
+import Firebase
+import FirebaseFirestore
 
 class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayerDelegate {
     
@@ -95,11 +97,30 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
         oldTapRecordHolder = TapRecordHolder()
         tapRecordHolder = TapRecordHolder()
 
+        let db = Firestore.firestore()
+        db.collection("reactions").limit(to: 1000).getDocuments(){ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                let documents = querySnapshot!.documents.shuffled()
+                for document in documents {
+                    let json = document.data()["data"] as! String
+                    if (!json.isEmpty)
+                    {
+                        self.oldTapRecordHolder.JsonToObject(json: json)
+                        break;
+                    }
+                }
+            }
+        }
+
+        /*
         let json = readJson()
         if (!json.isEmpty)
         {
             oldTapRecordHolder.JsonToObject(json: json)
         }
+        */
         
         // MainLoop起動.
         Timer.scheduledTimer(timeInterval: 0.05,                     //ループなら間隔 1度きりなら発動までの秒数
@@ -160,8 +181,15 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
         // 再生が終了したら呼ばれる
         print("play finished!!")
         let json : String = tapRecordHolder.SerializeToJson()
-        print(json)
-        dumpJson(json : json)
+        var ref: DocumentReference? = nil
+        let db = Firestore.firestore()
+        ref = db.collection("reactions").addDocument(data: [ "data": json ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
     }
     
     @objc func loopUpdate() {

@@ -7,6 +7,7 @@ target 'performer' do
 
   # Pods for performer
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
 
   target 'performerTests' do
     inherit! :search_paths

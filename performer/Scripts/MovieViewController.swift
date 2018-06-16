@@ -24,8 +24,6 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
     
     // VideoPlayer.
     var videoPlayer : AVPlayer!
-    // AudioPlayer.
-    var audioPlayer : AVAudioPlayer!
     
     // stampView
     var stampView : StampView!
@@ -34,6 +32,13 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
     var oldTapRecordHolder : TapRecordHolder!
     var tapRecordHolder : TapRecordHolder!
     var lastTime : Float64!
+    
+    // sound.
+    let se1 = Bundle.main.path(forResource: "Assets/Sounds/nobishiro", ofType: "m4a")!
+    let se2 = Bundle.main.path(forResource: "Assets/Sounds/cheer", ofType: "mp3")!
+    let se3 = Bundle.main.path(forResource: "Assets/Sounds/sugee", ofType: "m4a")!
+    let se4 = Bundle.main.path(forResource: "Assets/Sounds/fuun", ofType: "m4a")!
+    var soundPlayers : [AVAudioPlayer]!
     
     override func viewDidLoad() {
 
@@ -49,23 +54,21 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
         }
         
         // AudioPlayerの生成
-        if let soundBundlePath = Bundle.main.path(forResource: "Assets/Sounds/cheer", ofType: "mp3") {
+        let sePaths = [ se1, se2, se3, se4 ]
+        soundPlayers = []
+        for sePath in sePaths {
             do {
-                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundBundlePath))
+                let audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sePath))
                 audioPlayer.volume = 0.2
                 audioPlayer.prepareToPlay()
-
-                // AVAudioPlayerのデリゲートをセット
                 audioPlayer.delegate = self
+                soundPlayers.append(audioPlayer)
             } catch {
                 print("failed audio player instantiate.")
                 return
             }
-        } else {
-            print("not found audio file.")
-            return
         }
-        
+
         // Viewを生成.
         let videoPlayerView = AVPlayerView(frame: self.view.bounds)
         
@@ -96,31 +99,31 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
         // tapRecordを生成
         oldTapRecordHolder = TapRecordHolder()
         tapRecordHolder = TapRecordHolder()
-
+        
         let db = Firestore.firestore()
-        db.collection("reactions").limit(to: 1000).getDocuments(){ (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
+        let docRef = db.collection("reactions").document("onuma")
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let json = document.data()?["data"] as! String
+                if (!json.isEmpty)
+                {
+                    let serializer = ReactionSaveDataSerializer()
+                    let saveData = serializer.deserialize(json: json)
+                    self.oldTapRecordHolder = TapRecordHolder(reactionSaveData: saveData)
+                }
             } else {
-                let documents = querySnapshot!.documents.shuffled()
-                for document in documents {
-                    let json = document.data()["data"] as! String
-                    if (!json.isEmpty)
-                    {
-                        self.oldTapRecordHolder.JsonToObject(json: json)
-                        break;
+                // default data
+                let serializer = ReactionSaveDataSerializer()
+                let saveData = ReactionSaveData()
+                db.collection("reactions").document("onuma").setData(["data": serializer.serialize(instance: saveData)]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
                     }
                 }
             }
         }
-
-        /*
-        let json = readJson()
-        if (!json.isEmpty)
-        {
-            oldTapRecordHolder.JsonToObject(json: json)
-        }
-        */
         
         // MainLoop起動.
         Timer.scheduledTimer(timeInterval: 0.05,                     //ループなら間隔 1度きりなら発動までの秒数
@@ -170,6 +173,7 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
             break
         }
         stampView.instantiateStamp(filePath: filePath, posX: posX)
+        let audioPlayer = soundPlayers[index - 1]
         audioPlayer.currentTime = 0
         audioPlayer.play()
         
@@ -180,14 +184,46 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
     @objc func videoPlayerDidFinishPlaying() {
         // 再生が終了したら呼ばれる
         print("play finished!!")
-        let json : String = tapRecordHolder.SerializeToJson()
-        var ref: DocumentReference? = nil
+
         let db = Firestore.firestore()
-        ref = db.collection("reactions").addDocument(data: [ "data": json ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
+        let sfReference = db.collection("reactions").document("onuma")
+        
+        // Transaction
+        db.runTransaction({ (transaction, errorPointer) -> Any? in
+            let sfDocument: DocumentSnapshot
+            do {
+                try sfDocument = transaction.getDocument(sfReference)
+            } catch let fetchError as NSError {
+                print("[performer] fetch error pass")
+                errorPointer?.pointee = fetchError
+                return nil
+            }
+            
+            let saveData : ReactionSaveData
+            let serializer = ReactionSaveDataSerializer()
+            if sfDocument.exists {
+                let json = sfDocument.data()?["data"] as! String
+                if (!json.isEmpty)
+                {
+                    print("[performer] deserialize json")
+                    saveData = serializer.deserialize(json: json)
+                } else {
+                    print("[performer] data is empty")
+                    saveData = ReactionSaveData()
+                }
             } else {
-                print("Document added with ID: \(ref!.documentID)")
+                print("[performer] document not existed")
+                saveData = ReactionSaveData()
+            }
+
+            saveData.addTapRecord(records: self.tapRecordHolder.records)
+            transaction.setData(["data" : serializer.serialize(instance: saveData)], forDocument: sfReference)
+            return nil
+        }) { (object, error) in
+            if let error = error {
+                print("Transaction failed: \(error)")
+            } else {
+                print("Transaction successfully committed!")
             }
         }
     }
@@ -203,40 +239,11 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
         lastTime = time
 
         for index in records {
+            let audioPlayer = soundPlayers[index - 1]
             audioPlayer.currentTime = 0
             audioPlayer.play()
 
-//            onButton(index, 200)
         }
-    }
-    
-    func dumpJson(json : String) {
-        let file_name = "data.txt"
-        if let dir = FileManager.default.urls( for: .documentDirectory, in: .userDomainMask ).first {
-            let path_file_name = dir.appendingPathComponent( file_name )
-            do {
-                try json.write( to: path_file_name, atomically: false, encoding: String.Encoding.utf8 )
-            } catch {
-                //エラー処理
-            }
-        }
-    }
-    
-    // テキストを読み込むメソッド
-    func readJson() -> String {
-        let file_name = "data.txt"
-        if let dir = FileManager.default.urls( for: .documentDirectory, in: .userDomainMask ).first {
-            let path_file_name = dir.appendingPathComponent(file_name)
-            do {
-                let text = try String( contentsOf: path_file_name, encoding: String.Encoding.utf8 )
-                print( text )
-                return text;
-            } catch {
-                //エラー処理
-                return String();
-            }
-        }
-        return String();
     }
 }
 

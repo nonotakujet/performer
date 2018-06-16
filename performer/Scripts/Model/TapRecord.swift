@@ -16,9 +16,35 @@ struct TapRecord : Codable
 
 class TapRecordHolder
 {
+    // default ctor
     init()
     {
         records = []
+    }
+    
+    // サーバーに保存されているSaveDataから作成するコンストラクタ
+    init(reactionSaveData: ReactionSaveData)
+    {
+        records = []
+        
+        // reactionを再生する下限のreaction数を計算.
+        let lowerLimitNum = UInt64(ceil(Double(reactionSaveData.reactionNum) * 0.01))
+        
+        for result in reactionSaveData.results {
+            
+            for index in [1,2,3,4] {
+                let indexReactionNum = result.reactionNums[index - 1]
+                if (indexReactionNum < lowerLimitNum) {
+                    continue;
+                }
+                
+                let record = TapRecord(time: Float64(result.timeSecond), index: index)
+                records.append(record)
+            }
+        }
+        
+        // time順にsort
+        records.sort(by: {$0.time < $1.time})
     }
 
     public func GetRecords(bfTime: Float64, afTime: Float64) -> [Int]
@@ -65,5 +91,6 @@ class TapRecordHolder
      * member変数
      */
     
+    // recordは必ず、time順にsordされていること
     var records : [TapRecord]
 }

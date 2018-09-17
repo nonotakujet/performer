@@ -12,6 +12,9 @@
 		6A53FB49214F98350054A8C2 /* MovieSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB48214F98350054A8C2 /* MovieSelectViewController.swift */; };
 		6A53FB4A214F98350054A8C2 /* MovieSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB48214F98350054A8C2 /* MovieSelectViewController.swift */; };
 		6A53FB4B214F98350054A8C2 /* MovieSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB48214F98350054A8C2 /* MovieSelectViewController.swift */; };
+		6A53FB4D214F9F840054A8C2 /* MovieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB4C214F9F840054A8C2 /* MovieViewCell.swift */; };
+		6A53FB4E214F9F840054A8C2 /* MovieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB4C214F9F840054A8C2 /* MovieViewCell.swift */; };
+		6A53FB4F214F9F840054A8C2 /* MovieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB4C214F9F840054A8C2 /* MovieViewCell.swift */; };
 		6A5A302B20976B3F00D11889 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5A302A20976B3F00D11889 /* AVFoundation.framework */; };
 		6A5A302D20976B4600D11889 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5A302C20976B4600D11889 /* AVKit.framework */; };
 		6A5A303020976C8F00D11889 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 6A5A302F20976C8F00D11889 /* Assets */; };
@@ -66,6 +69,7 @@
 		122ECAD09B4A30A6543F0DE6 /* Pods-performerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-performerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-performerTests/Pods-performerTests.release.xcconfig"; sourceTree = "<group>"; };
 		46F856E166C4A69550C87400 /* Pods_performerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_performerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A53FB48214F98350054A8C2 /* MovieSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSelectViewController.swift; sourceTree = "<group>"; };
+		6A53FB4C214F9F840054A8C2 /* MovieViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewCell.swift; sourceTree = "<group>"; };
 		6A5A302A20976B3F00D11889 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6A5A302C20976B4600D11889 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		6A5A302F20976C8F00D11889 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 				6A8A633F20CD6906009AB53C /* AVPlayerView.swift */,
 				6A8A634120CD6906009AB53C /* ReactionView.swift */,
 				6A8A634020CD6906009AB53C /* StampView.swift */,
+				6A53FB4C214F9F840054A8C2 /* MovieViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -502,6 +507,7 @@
 				6A8A634720CD693C009AB53C /* TapRecord.swift in Sources */,
 				6AC3997120D3ED1100261025 /* ArrayExtension.swift in Sources */,
 				6A8A633D20CD68EC009AB53C /* AppDelegate.swift in Sources */,
+				6A53FB4D214F9F840054A8C2 /* MovieViewCell.swift in Sources */,
 				6AC7C5B820D5258F00CD5494 /* ReactionSaveData.swift in Sources */,
 				6A8A633C20CD68EC009AB53C /* TopViewController.swift in Sources */,
 				6A8A634320CD6906009AB53C /* StampView.swift in Sources */,
@@ -518,6 +524,7 @@
 				6AB371E52097167C00DD2B38 /* performerTests.swift in Sources */,
 				6AC3997220D3ED1100261025 /* ArrayExtension.swift in Sources */,
 				6AC7C5B920D5258F00CD5494 /* ReactionSaveData.swift in Sources */,
+				6A53FB4E214F9F840054A8C2 /* MovieViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +537,7 @@
 				6AB371F02097167C00DD2B38 /* performerUITests.swift in Sources */,
 				6AC3997320D3ED1100261025 /* ArrayExtension.swift in Sources */,
 				6AC7C5BA20D5258F00CD5494 /* ReactionSaveData.swift in Sources */,
+				6A53FB4F214F9F840054A8C2 /* MovieViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

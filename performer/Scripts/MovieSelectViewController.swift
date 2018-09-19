@@ -10,9 +10,10 @@ import UIKit
 import Photos
 import PhotosUI
 
-private let reuseIdentifier = "cell"
+private let cellReuseIdentifier = "cell"
+private let headerReuseIdentifier = "SectionHeader"
 
-class MovieSelectViewController: UICollectionViewController {
+class MovieSelectViewController: UICollectionViewController, MovieSelectHeaderButtonDelegate {
 
     var fetchResult: PHFetchResult<PHAsset>!
     var assetCollection: PHAssetCollection!
@@ -33,11 +34,8 @@ class MovieSelectViewController: UICollectionViewController {
         if fetchResult == nil {
             let allPhotosOptions = PHFetchOptions()
             allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-            fetchResult = PHAsset.fetchAssets(with: allPhotosOptions)
+            fetchResult = PHAsset.fetchAssets(with: .image, options: allPhotosOptions)
         }
-
-        // Register cell classes
-        // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 
     // TODO : nonomura - 調査
@@ -50,7 +48,10 @@ class MovieSelectViewController: UICollectionViewController {
 
         let scale = UIScreen.main.scale
         let length = UIScreen.main.bounds.size.width / 3.0;
-        (collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: length, height: length)
+        let fl = collectionViewLayout as! UICollectionViewFlowLayout
+        fl.itemSize = CGSize(width: length, height: length)
+        fl.sectionHeadersPinToVisibleBounds = true
+        
         thumbnailSize = CGSize(width: length * scale, height: length * scale) // NOTE : Retina対応で解像度高くしておく.
     }
 
@@ -104,7 +105,7 @@ class MovieSelectViewController: UICollectionViewController {
         let asset = fetchResult.object(at: indexPath.item)
 
         // Dequeue a GridViewCell.
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? MovieViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? MovieViewCell
             else { fatalError("unexpected cell in collection view") }
         
         // Request an image for the asset from the PHCachingImageManager.
@@ -118,7 +119,41 @@ class MovieSelectViewController: UICollectionViewController {
         })
         return cell
     }
+
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as? MovieSelectHeaderView else {
+            fatalError("Could not find proper header")
+        }
+
+        if kind == UICollectionElementKindSectionHeader {
+            header.buttonDelegate = self;
+            return header
+        }
+
+        return UICollectionReusableView()
+    }
+
+    /*
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath)        
+    }
+    */
+
+    // MARK: MovieSelectHeaderButtonDelegate
+
+    //! Postボタンがおされた時のコールバック
+    func onPost()
+    {
     
+    }
+    
+    //! Backボタンがおされた時のコールバック
+    func onBack()
+    {
+    
+    }
+
     // MARK: UIScrollView
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

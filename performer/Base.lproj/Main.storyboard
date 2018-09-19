@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nvP-AM-qU7">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Nor-a9-N0e"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3U-a1-AfQ">
-                                <rect key="frame" x="159" y="318" width="56" height="30"/>
+                                <rect key="frame" x="179" y="353" width="56" height="30"/>
                                 <state key="normal" title="Go Next"/>
                                 <connections>
                                     <action selector="OnGoToNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kR6-Kh-Zqt"/>
@@ -48,7 +49,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Z0b-vT-RB1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2vv-cO-6dE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgt-8Y-Xxn" userLabel="BackButton">
@@ -57,7 +58,7 @@
                                 <state key="normal" title="&lt; Back"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-4l-cho" userLabel="PlayButton">
-                                <rect key="frame" x="168" y="601" width="40" height="30"/>
+                                <rect key="frame" x="187" y="601" width="40" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.54091830077994163" blue="0.29540937129513412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="46h-tz-vFq"/>
@@ -68,7 +69,7 @@
                                 </state>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6Z-Ej-hLh" userLabel="ReactionViewRoot">
-                                <rect key="frame" x="17" y="571" width="340" height="59"/>
+                                <rect key="frame" x="17" y="571" width="380" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -154,18 +155,18 @@
             <objects>
                 <collectionViewController id="nvP-AM-qU7" customClass="MovieSelectViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="p6Q-oI-Eo5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="uDP-ik-YSa">
                             <size key="itemSize" width="160" height="160"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="4c3-R9-oN1" userLabel="MovieViewCell" customClass="MovieViewCell" customModule="performer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                <rect key="frame" x="0.0" y="50" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
@@ -187,6 +188,38 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionHeader" id="2vr-GB-q3u" userLabel="Section Header" customClass="MovieSelectHeaderView" customModule="performer" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="動画" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBB-xD-fwW">
+                                    <rect key="frame" x="191" y="15" width="33" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZf-we-vvf" userLabel="PostButton">
+                                    <rect key="frame" x="355" y="10" width="31" height="30"/>
+                                    <state key="normal" title="投稿"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ztp-N9-Cut" userLabel="BackButton">
+                                    <rect key="frame" x="18" y="10" width="30" height="30"/>
+                                    <state key="normal" title="&lt;"/>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailingMargin" secondItem="oZf-we-vvf" secondAttribute="trailing" constant="20" id="7sd-EQ-0qA"/>
+                                <constraint firstItem="qBB-xD-fwW" firstAttribute="centerX" secondItem="2vr-GB-q3u" secondAttribute="centerX" id="9lu-VX-ph2"/>
+                                <constraint firstItem="ztp-N9-Cut" firstAttribute="centerY" secondItem="2vr-GB-q3u" secondAttribute="centerY" id="pVY-Br-Okb"/>
+                                <constraint firstItem="oZf-we-vvf" firstAttribute="centerY" secondItem="2vr-GB-q3u" secondAttribute="centerY" id="wgU-4N-fIc"/>
+                                <constraint firstItem="ztp-N9-Cut" firstAttribute="leading" secondItem="2vr-GB-q3u" secondAttribute="leadingMargin" constant="10" id="xTZ-FJ-QwM"/>
+                                <constraint firstItem="qBB-xD-fwW" firstAttribute="centerY" secondItem="2vr-GB-q3u" secondAttribute="centerY" id="ylc-t2-MuW"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="backButton" destination="ztp-N9-Cut" id="a0h-YE-lct"/>
+                                <outlet property="postButton" destination="oZf-we-vvf" id="Vg7-Cb-h6S"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="nvP-AM-qU7" id="fyp-6Z-euB"/>
                             <outlet property="delegate" destination="nvP-AM-qU7" id="SyS-CC-iAX"/>

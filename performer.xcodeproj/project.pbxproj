@@ -18,6 +18,7 @@
 		6A53FB5121529CD20054A8C2 /* MovieSelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB5021529CD20054A8C2 /* MovieSelectHeaderView.swift */; };
 		6A53FB5221529CD20054A8C2 /* MovieSelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB5021529CD20054A8C2 /* MovieSelectHeaderView.swift */; };
 		6A53FB5321529CD20054A8C2 /* MovieSelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB5021529CD20054A8C2 /* MovieSelectHeaderView.swift */; };
+		6A53FB552152B76E0054A8C2 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A53FB542152A8240054A8C2 /* check.png */; };
 		6A5A302B20976B3F00D11889 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5A302A20976B3F00D11889 /* AVFoundation.framework */; };
 		6A5A302D20976B4600D11889 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5A302C20976B4600D11889 /* AVKit.framework */; };
 		6A5A303020976C8F00D11889 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 6A5A302F20976C8F00D11889 /* Assets */; };
@@ -74,6 +75,7 @@
 		6A53FB48214F98350054A8C2 /* MovieSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSelectViewController.swift; sourceTree = "<group>"; };
 		6A53FB4C214F9F840054A8C2 /* MovieViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewCell.swift; sourceTree = "<group>"; };
 		6A53FB5021529CD20054A8C2 /* MovieSelectHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSelectHeaderView.swift; sourceTree = "<group>"; };
+		6A53FB542152A8240054A8C2 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		6A5A302A20976B3F00D11889 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6A5A302C20976B4600D11889 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		6A5A302F20976C8F00D11889 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				6A5A304920A0B60A00D11889 /* good.png */,
 				6A5A304820A0B60A00D11889 /* onpu.png */,
 				6A5A304620A0B60A00D11889 /* onpu2.png */,
+				6A53FB542152A8240054A8C2 /* check.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				6AB371D52097167A00DD2B38 /* Main.storyboard in Resources */,
 				6A5A304C20A0B60A00D11889 /* onpu.png in Resources */,
 				6A5A304B20A0B60A00D11889 /* fire.png in Resources */,
+				6A53FB552152B76E0054A8C2 /* check.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

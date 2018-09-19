@@ -17,6 +17,8 @@ class MovieSelectViewController: UICollectionViewController, MovieSelectHeaderBu
 
     var fetchResult: PHFetchResult<PHAsset>!
     var assetCollection: PHAssetCollection!
+    var headerView: MovieSelectHeaderView!
+    var selectedIndex: IndexPath!;
 
     fileprivate let imageManager = PHCachingImageManager()
     fileprivate var thumbnailSize: CGSize!
@@ -121,24 +123,43 @@ class MovieSelectViewController: UICollectionViewController, MovieSelectHeaderBu
     }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as? MovieSelectHeaderView;
 
-        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as? MovieSelectHeaderView else {
-            fatalError("Could not find proper header")
-        }
-
-        if kind == UICollectionElementKindSectionHeader {
-            header.buttonDelegate = self;
-            return header
+        if (kind == UICollectionElementKindSectionHeader) {
+            headerView.buttonDelegate = self;
+            return headerView
         }
 
         return UICollectionReusableView()
     }
+    
+    // Cell が選択された場合
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-    /*
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath)        
+        // すでに選択済みのrowが選択された
+        if (selectedIndex == indexPath) {
+            // 投稿ボタンを有効に.
+            headerView.setPostButtonEnable(isEnabled: false)
+            
+            let currentCell = collectionView.cellForItem(at: indexPath) as? MovieViewCell
+            currentCell?.isChecked = false
+
+            selectedIndex = nil;
+        } else {
+            // 投稿ボタンを有効に.
+            headerView.setPostButtonEnable(isEnabled: true)
+            
+            if (selectedIndex != nil)
+            {
+                let beforeCell = collectionView.cellForItem(at: selectedIndex) as? MovieViewCell
+                beforeCell?.isChecked = false
+            }
+            let currentCell = collectionView.cellForItem(at: indexPath) as? MovieViewCell
+            currentCell?.isChecked = true
+
+            selectedIndex = indexPath
+        }
     }
-    */
 
     // MARK: MovieSelectHeaderButtonDelegate
 

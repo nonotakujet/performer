@@ -26,6 +26,11 @@ class MovieSelectHeaderView: UICollectionReusableView {
         backButton.addTarget(self, action: #selector(self.onBackButton), for: UIControlEvents.touchUpInside)
     }
 
+    func setPostButtonEnable(isEnabled: Bool)
+    {
+        postButton.isEnabled = isEnabled;
+    }
+
     /// ボタンが押された時のcallback.
     @objc func onPostButton(sender: UIButton) {
         self.buttonDelegate?.onPost();

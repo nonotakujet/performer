@@ -11,12 +11,19 @@ import UIKit
 class MovieViewCell: UICollectionViewCell {
 
     @IBOutlet var imageView: UIImageView!
-
+    @IBOutlet weak var checkImage: UIImageView!
+    
     var representedAssetIdentifier: String!
 
     var thumbnailImage: UIImage! {
         didSet {
             imageView.image = thumbnailImage
+        }
+    }
+
+    var isChecked: Bool! {
+        didSet {
+            checkImage.isHidden = !isChecked
         }
     }
 

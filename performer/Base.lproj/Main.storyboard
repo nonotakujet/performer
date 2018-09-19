@@ -172,18 +172,28 @@
                                     <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ysb-T2-FDN">
+                                        <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ysb-T2-FDN" userLabel="ThumbnailImage">
                                             <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                        </imageView>
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check.png" translatesAutoresizingMaskIntoConstraints="NO" id="SCD-pe-K8T" userLabel="CheckImage">
+                                            <rect key="frame" x="110" y="10" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="Fgj-FU-f9L"/>
+                                                <constraint firstAttribute="width" constant="40" id="ogA-vN-U0l"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="Ysb-T2-FDN" firstAttribute="leading" secondItem="4c3-R9-oN1" secondAttribute="leading" id="BEg-E2-fw6"/>
+                                    <constraint firstAttribute="trailing" secondItem="SCD-pe-K8T" secondAttribute="trailing" constant="10" id="Gqe-Zk-3hv"/>
                                     <constraint firstItem="Ysb-T2-FDN" firstAttribute="top" secondItem="4c3-R9-oN1" secondAttribute="top" id="P3K-La-Qwq"/>
                                     <constraint firstAttribute="trailing" secondItem="Ysb-T2-FDN" secondAttribute="trailing" id="n9q-mc-bqo"/>
                                     <constraint firstAttribute="bottom" secondItem="Ysb-T2-FDN" secondAttribute="bottom" id="ntH-mF-Kb9"/>
+                                    <constraint firstItem="SCD-pe-K8T" firstAttribute="top" secondItem="4c3-R9-oN1" secondAttribute="top" constant="10" id="txk-yV-Ckh"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="checkImage" destination="SCD-pe-K8T" id="Bkt-aZ-dbr"/>
                                     <outlet property="imageView" destination="Ysb-T2-FDN" id="It8-xh-xuP"/>
                                 </connections>
                             </collectionViewCell>
@@ -198,7 +208,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZf-we-vvf" userLabel="PostButton">
+                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZf-we-vvf" userLabel="PostButton">
                                     <rect key="frame" x="355" y="10" width="31" height="30"/>
                                     <state key="normal" title="投稿"/>
                                 </button>
@@ -232,6 +242,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="check.png" width="64" height="64"/>
         <image name="fire.png" width="128" height="128"/>
         <image name="good.png" width="128" height="128"/>
         <image name="onpu.png" width="128" height="128"/>

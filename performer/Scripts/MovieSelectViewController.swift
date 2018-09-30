@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import PhotosUI
+import AWSS3
 
 private let cellReuseIdentifier = "cell"
 private let headerReuseIdentifier = "SectionHeader"
@@ -126,7 +127,8 @@ class MovieSelectViewController: UICollectionViewController, MovieSelectHeaderBu
         headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as? MovieSelectHeaderView;
 
         if (kind == UICollectionElementKindSectionHeader) {
-            headerView.buttonDelegate = self;
+            headerView.activate()
+            headerView.buttonDelegate = self
             return headerView
         }
 
@@ -166,15 +168,120 @@ class MovieSelectViewController: UICollectionViewController, MovieSelectHeaderBu
     //! Postボタンがおされた時のコールバック
     func onPost()
     {
+        // 送信ボタンの処理
+        let postAction = UIAlertAction(title: "アップロード", style: .default, handler: {
+          [] (action: UIAlertAction!) -> Void in
+            // Configure the cell
+            let asset = self.fetchResult.object(at: self.selectedIndex.item)
+            asset.getURL(completionHandler: { (url) in
+                if (url != nil) {
+                    // くるくる表示
+                    self.showIndicator()
+                    
+                    // アップロード処理
+                    self.uploadData(url: url, {
+                        // くるくる非表示
+                        self.hideIndicator()
+                        
+                        self.headerView.setPostButtonEnable(isEnabled: false)
+                        let currentCell = self.collectionView?.cellForItem(at: self.selectedIndex) as? MovieViewCell
+                        currentCell?.isChecked = false
+                        self.selectedIndex = nil;
     
+                        self.showAlert(title: "アップロード", message: "アップロードが完了しました。")
+                    }, { error in
+                        if let e = error as NSError? {
+                            print("localizedDescription:\n\(e.localizedDescription)")
+                            print("userInfo:\n\(e.userInfo)")
+                        }
+                        // くるくる非表示
+                        self.hideIndicator()
+                        self.showAlert(title: "アップロード", message: "アップロードが失敗しました。")
+                    })
+                } else {
+                    self.showAlert(title: "アップロード", message: "アップロードが失敗しました。")
+                }
+            })
+        })
+
+        // キャンセルボタンの処理
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+
+        // 送信確認
+        let confirmation = UIAlertController(title: "確認", message: "アップロードしてもいいですか？", preferredStyle: .alert)
+        confirmation.addAction(postAction)
+        confirmation.addAction(cancelAction)
+        self.present(confirmation, animated: true, completion: nil)
     }
     
     //! Backボタンがおされた時のコールバック
     func onBack()
     {
+    }
     
+    // 選択しているファイルをS3へアップロード
+    func uploadData(url: URL?, _ complete: @escaping () -> Void, _ failure: @escaping (Error?) -> Void) {
+        let data = Bundle.main.infoDictionary! as Dictionary
+        let bucket = data["Storage Bucket Name"] as! String
+        let uploadRequest = AWSS3TransferManagerUploadRequest()
+        uploadRequest?.body = url!
+        uploadRequest?.key = (url?.lastPathComponent)!
+        uploadRequest?.bucket = bucket
+        let transferManager = AWSS3TransferManager.default()
+        transferManager.upload(uploadRequest!).continueWith { task -> AnyObject? in
+            if let error = task.error as NSError? {
+                print("localizedDescription:\n\(error.localizedDescription)")
+                print("userInfo:\n\(error.userInfo)")
+                failure(error) // 失敗
+            } else {
+                complete() // 成功
+            }
+            return nil
+        }
+    }
+    
+    func showIndicator() {
+        // インジケータビューの背景
+        let indicatorBackgroundView = UIView(frame: self.view.bounds)
+        indicatorBackgroundView.backgroundColor = UIColor.black
+        indicatorBackgroundView.alpha = 0.4
+        indicatorBackgroundView.tag = 100100
+
+        let indicator = UIActivityIndicatorView()
+        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.center = self.view.center
+        indicator.color = UIColor.white
+        // アニメーション停止と同時に隠す設定
+        indicator.hidesWhenStopped = true
+
+        // 作成したviewを表示
+        indicatorBackgroundView.addSubview(indicator)
+        self.view.addSubview(indicatorBackgroundView)
+
+        indicator.startAnimating()
     }
 
+    func hideIndicator(){
+        // メインスレッドに戻ってUIに絡む
+        DispatchQueue.main.async {
+            // viewにローディング画面が出ていれば閉じる
+            if let viewWithTag = self.view.viewWithTag(100100) {
+                viewWithTag.removeFromSuperview()
+            }
+        }
+    }
+
+   // アラート表示
+    func showAlert(title: String, message: String) {
+        // OKボタンの処理
+        let defaultAction = UIAlertAction(title: "OK", style: .default)
+
+        // アラート表示
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(defaultAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: UIScrollView
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

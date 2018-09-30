@@ -1,4 +1,9 @@
 PODS:
+  - AWSCognito (2.6.27):
+    - AWSCore (= 2.6.27)
+  - AWSCore (2.6.27)
+  - AWSS3 (2.6.27):
+    - AWSCore (= 2.6.27)
   - BoringSSL (10.0.6):
     - BoringSSL/Implementation (= 10.0.6)
     - BoringSSL/Interface (= 10.0.6)
@@ -93,13 +98,20 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.1)
+  - SSZipArchive (2.1.3)
 
 DEPENDENCIES:
+  - AWSCognito
+  - AWSS3
   - Firebase/Core
   - Firebase/Firestore
+  - SSZipArchive
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AWSCognito
+    - AWSCore
+    - AWSS3
     - BoringSSL
     - Firebase
     - FirebaseAnalytics
@@ -116,8 +128,12 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - SSZipArchive
 
 SPEC CHECKSUMS:
+  AWSCognito: 582d098de9b4cc16bd9fad8e2fbea9f7280ec428
+  AWSCore: 87e3711bc0d7e055f9d85b6ef272d7f91f2e0796
+  AWSS3: 2069e63aeac5dd9fd90a74b8d717cacae7a8bf67
   BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
   Firebase: 75ea9e232eefa158c1049028030b8f661a2ccb62
   FirebaseAnalytics: 993577e91157feb40945abedd6ab346d8a4b6ac8
@@ -134,7 +150,8 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  SSZipArchive: 51a800ebb77f95a8329b6ced1faaff394b47f509
 
-PODFILE CHECKSUM: fb124b17552759eb005fd30fa6989a4a1145da52
+PODFILE CHECKSUM: 6710ad782e773c617e94baa70f0326c156496864
 
 COCOAPODS: 1.5.3

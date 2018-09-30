@@ -19,6 +19,9 @@
 		6A53FB5221529CD20054A8C2 /* MovieSelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB5021529CD20054A8C2 /* MovieSelectHeaderView.swift */; };
 		6A53FB5321529CD20054A8C2 /* MovieSelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB5021529CD20054A8C2 /* MovieSelectHeaderView.swift */; };
 		6A53FB552152B76E0054A8C2 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A53FB542152A8240054A8C2 /* check.png */; };
+		6A53FB582160902E0054A8C2 /* PHAssetExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB572160902E0054A8C2 /* PHAssetExtention.swift */; };
+		6A53FB592160902E0054A8C2 /* PHAssetExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB572160902E0054A8C2 /* PHAssetExtention.swift */; };
+		6A53FB5A2160902E0054A8C2 /* PHAssetExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53FB572160902E0054A8C2 /* PHAssetExtention.swift */; };
 		6A5A302B20976B3F00D11889 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5A302A20976B3F00D11889 /* AVFoundation.framework */; };
 		6A5A302D20976B4600D11889 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5A302C20976B4600D11889 /* AVKit.framework */; };
 		6A5A303020976C8F00D11889 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 6A5A302F20976C8F00D11889 /* Assets */; };
@@ -76,6 +79,7 @@
 		6A53FB4C214F9F840054A8C2 /* MovieViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewCell.swift; sourceTree = "<group>"; };
 		6A53FB5021529CD20054A8C2 /* MovieSelectHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSelectHeaderView.swift; sourceTree = "<group>"; };
 		6A53FB542152A8240054A8C2 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		6A53FB572160902E0054A8C2 /* PHAssetExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHAssetExtention.swift; sourceTree = "<group>"; };
 		6A5A302A20976B3F00D11889 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6A5A302C20976B4600D11889 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		6A5A302F20976C8F00D11889 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
@@ -141,6 +145,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A53FB56216090150054A8C2 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				6A53FB572160902E0054A8C2 /* PHAssetExtention.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
 		6A5A302920976B3F00D11889 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +180,7 @@
 		6A8A633720CD6899009AB53C /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				6A53FB56216090150054A8C2 /* Extention */,
 				6AC3996F20D3ECFE00261025 /* Util */,
 				6A8A633A20CD68EC009AB53C /* AppDelegate.swift */,
 				6A8A633B20CD68EC009AB53C /* MovieViewController.swift */,
@@ -458,9 +471,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-performer/Pods-performer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -470,9 +487,13 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -516,6 +537,7 @@
 				6A8A634720CD693C009AB53C /* TapRecord.swift in Sources */,
 				6AC3997120D3ED1100261025 /* ArrayExtension.swift in Sources */,
 				6A8A633D20CD68EC009AB53C /* AppDelegate.swift in Sources */,
+				6A53FB582160902E0054A8C2 /* PHAssetExtention.swift in Sources */,
 				6A53FB4D214F9F840054A8C2 /* MovieViewCell.swift in Sources */,
 				6AC7C5B820D5258F00CD5494 /* ReactionSaveData.swift in Sources */,
 				6A8A633C20CD68EC009AB53C /* TopViewController.swift in Sources */,
@@ -536,6 +558,7 @@
 				6AC3997220D3ED1100261025 /* ArrayExtension.swift in Sources */,
 				6AC7C5B920D5258F00CD5494 /* ReactionSaveData.swift in Sources */,
 				6A53FB4E214F9F840054A8C2 /* MovieViewCell.swift in Sources */,
+				6A53FB592160902E0054A8C2 /* PHAssetExtention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +573,7 @@
 				6AC3997320D3ED1100261025 /* ArrayExtension.swift in Sources */,
 				6AC7C5BA20D5258F00CD5494 /* ReactionSaveData.swift in Sources */,
 				6A53FB4F214F9F840054A8C2 /* MovieViewCell.swift in Sources */,
+				6A53FB5A2160902E0054A8C2 /* PHAssetExtention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,11 @@ target 'performer' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
 
+  # Pods for CognitoSample
+  pod 'SSZipArchive'
+  pod 'AWSCognito'
+  pod 'AWSS3'
+
   target 'performerTests' do
     inherit! :search_paths
     # Pods for testing

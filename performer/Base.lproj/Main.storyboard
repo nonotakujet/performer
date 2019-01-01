@@ -208,7 +208,7 @@
         <!--動画一覧-->
         <scene sceneID="FFR-gF-V8x">
             <objects>
-                <viewController storyboardIdentifier="MovieIndex" id="dN6-e1-rnB" customClass="TopViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieIndex" id="dN6-e1-rnB" customClass="MovieSelectViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="yAI-ip-LhH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

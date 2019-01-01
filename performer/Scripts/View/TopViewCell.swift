@@ -21,7 +21,6 @@ class TopViewCell: UITableViewCell {
     /// サムネイルをロードします.
     private func loadThumbnail(movieId: String) {
         let path = String(format: "%@/%@/images/%@-00001.png", Const.BASE_URL, movieId, movieId)
-        print(path)
         self.thumbnail.loadImageAsynchronously(urlString: path)
     }
 }

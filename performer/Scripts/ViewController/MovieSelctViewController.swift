@@ -1,8 +1,8 @@
 //
-//  TopViewController.swift
+//  MovieSelectViewController.swift
 //  performer
 //
-//  TopのViewController.
+//  閲覧する動画選択のViewController.
 //
 //  Created by Taku Nonomura on 2018/05/01.
 //  Copyright © 2018年 visioooon. All rights reserved.
@@ -12,7 +12,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class TopViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MovieSelectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var table: UITableView!
     var movies : [String]!

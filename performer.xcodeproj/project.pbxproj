@@ -192,14 +192,12 @@
 		6A8A633720CD6899009AB53C /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				6A53FB56216090150054A8C2 /* Extention */,
-				6AC3996F20D3ECFE00261025 /* Util */,
 				6A8A633A20CD68EC009AB53C /* AppDelegate.swift */,
-				6A8A633B20CD68EC009AB53C /* MovieViewController.swift */,
-				6A53FB48214F98350054A8C2 /* MovieSelectViewController.swift */,
-				6A53FB5F21612ECC0054A8C2 /* TopViewController.swift */,
+				6AEB23A021DB5CD6008B2F4D /* ViewController */,
 				6A8A634520CD690D009AB53C /* Model */,
 				6A8A633820CD68C2009AB53C /* View */,
+				6A53FB56216090150054A8C2 /* Extention */,
+				6AC3996F20D3ECFE00261025 /* Util */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -288,6 +286,16 @@
 				6AC3997020D3ED1100261025 /* ArrayExtension.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		6AEB23A021DB5CD6008B2F4D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6A8A633B20CD68EC009AB53C /* MovieViewController.swift */,
+				6A53FB48214F98350054A8C2 /* MovieSelectViewController.swift */,
+				6A53FB5F21612ECC0054A8C2 /* TopViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		CDDFD84221426CA7D4AC2907 /* Pods */ = {

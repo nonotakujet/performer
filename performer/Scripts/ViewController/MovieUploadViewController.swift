@@ -1,5 +1,5 @@
 //
-//  MovieSelectViewController.swift
+//  MovieUploadViewController.swift
 //  performer
 //
 //  Created by Taku Nonomura on 2018/09/17.
@@ -16,7 +16,7 @@ import FirebaseFirestore
 private let cellReuseIdentifier = "cell"
 private let headerReuseIdentifier = "SectionHeader"
 
-class MovieSelectViewController: UICollectionViewController, MovieSelectHeaderButtonDelegate {
+class MovieUploadViewController: UICollectionViewController, MovieSelectHeaderButtonDelegate {
 
     var fetchResult: PHFetchResult<PHAsset>!
     var assetCollection: PHAssetCollection!
@@ -368,7 +368,7 @@ private extension UICollectionView {
 }
 
 // MARK: PHPhotoLibraryChangeObserver
-extension MovieSelectViewController: PHPhotoLibraryChangeObserver {
+extension MovieUploadViewController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
 
         guard let changes = changeInstance.changeDetails(for: fetchResult)

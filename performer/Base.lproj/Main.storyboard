@@ -124,7 +124,7 @@
         <!--動画投稿-->
         <scene sceneID="UuN-Fw-uI9">
             <objects>
-                <collectionViewController storyboardIdentifier="MovieSelect" id="nvP-AM-qU7" customClass="MovieSelectViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="MovieSelect" id="nvP-AM-qU7" customClass="MovieUploadViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="p6Q-oI-Eo5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

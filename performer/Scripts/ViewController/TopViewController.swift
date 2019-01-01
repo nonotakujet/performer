@@ -44,13 +44,13 @@ class TopViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(_ table: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // tableCell の ID で UITableViewCell のインスタンスを生成
         guard let cell = table.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as? TopViewCell else { fatalError("unexpected cell in collection view") }
-        cell.label.text = movies[indexPath.row]
+        cell.setUp(movieId: movies[indexPath.row])
         return cell
     }
 
-    // Cell の高さを150にする
+    // Cell の高さを80にする
     func tableView(_ table: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
+        return 80.0
     }
 
     // Touchされた時の処理.

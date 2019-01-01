@@ -47,7 +47,7 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
 
         // 親クラスのLoad完了処理.
         super.viewDidLoad()
-        let path = String(format: "https://d1oiv9b8vu4q3j.cloudfront.net/%@/movies/%@.m3u8", movieFileName, movieFileName)
+        let path = String(format: "%@/%@/movies/%@.m3u8", Const.BASE_URL, movieFileName, movieFileName)
         let url = URL(fileURLWithPath: path)
         let asset = AVURLAsset(url: url) // .m3u8 file
         let playerItem = AVPlayerItem(asset: asset)

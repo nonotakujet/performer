@@ -9,5 +9,5 @@
 import UIKit
 
 class TopViewCell: UITableViewCell {
-    @IBOutlet weak var thumbnailImage: UIImageView!
+    @IBOutlet weak var label: UILabel!
 }

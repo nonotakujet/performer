@@ -21,7 +21,10 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var reactionViewRoot: UIView!
     @IBOutlet var reactionView: ReactionView!
-    
+
+    var movieId : String = ""
+    var movieFileName : String = ""
+
     // VideoPlayer.
     var videoPlayer : AVPlayer!
     
@@ -44,15 +47,13 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
 
         // 親クラスのLoad完了処理.
         super.viewDidLoad()
-        
-        // VideoPlayerの生成.
-        if let videoBundlePath = Bundle.main.path(forResource: "Assets/Movies/onuma", ofType: "mov") {
-            videoPlayer = AVPlayer(url: URL(fileURLWithPath: videoBundlePath))
-        } else {
-            print("not found movie file.")
-            return
-        }
-        
+        let path = String(format: "https://d1oiv9b8vu4q3j.cloudfront.net/%@/movies/%@.m3u8", movieFileName, movieFileName)
+        let url = URL(fileURLWithPath: path)
+        let asset = AVURLAsset(url: url) // .m3u8 file
+        let playerItem = AVPlayerItem(asset: asset)
+
+        videoPlayer = AVPlayer(playerItem: playerItem)
+
         // AudioPlayerの生成
         let sePaths = [ se1, se2, se3, se4 ]
         soundPlayers = []
@@ -101,7 +102,7 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
         tapRecordHolder = TapRecordHolder()
         
         let db = Firestore.firestore()
-        let docRef = db.collection("reactions").document("onuma")
+        let docRef = db.collection("reactions").document(movieId)
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 let json = document.data()?["data"] as! String
@@ -115,7 +116,7 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
                 // default data
                 let serializer = ReactionSaveDataSerializer()
                 let saveData = ReactionSaveData()
-                db.collection("reactions").document("onuma").setData(["data": serializer.serialize(instance: saveData)]) { err in
+                db.collection("reactions").document(self.movieId).setData(["data": serializer.serialize(instance: saveData)]) { err in
                     if let err = err {
                         print("Error writing document: \(err)")
                     } else {
@@ -186,7 +187,7 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
         print("play finished!!")
 
         let db = Firestore.firestore()
-        let sfReference = db.collection("reactions").document("onuma")
+        let sfReference = db.collection("reactions").document(movieId)
         
         // Transaction
         db.runTransaction({ (transaction, errorPointer) -> Any? in

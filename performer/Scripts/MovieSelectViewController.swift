@@ -10,6 +10,8 @@ import UIKit
 import Photos
 import PhotosUI
 import AWSS3
+import Firebase
+import FirebaseFirestore
 
 private let cellReuseIdentifier = "cell"
 private let headerReuseIdentifier = "SectionHeader"
@@ -33,11 +35,11 @@ class MovieSelectViewController: UICollectionViewController, MovieSelectHeaderBu
         resetCachedAssets()
         PHPhotoLibrary.shared().register(self)
 
-        // fetchResultが定義されてない時は、全てのAssetをFetchする.s
+        // fetchResultが定義されてない時は、全てのAssetをFetchする.
         if fetchResult == nil {
             let allPhotosOptions = PHFetchOptions()
             allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-            fetchResult = PHAsset.fetchAssets(with: .image, options: allPhotosOptions)
+            fetchResult = PHAsset.fetchAssets(with: .video, options: allPhotosOptions)
         }
     }
 
@@ -187,7 +189,12 @@ class MovieSelectViewController: UICollectionViewController, MovieSelectHeaderBu
                         let currentCell = self.collectionView?.cellForItem(at: self.selectedIndex) as? MovieViewCell
                         currentCell?.isChecked = false
                         self.selectedIndex = nil;
-    
+                        
+                        // indexデータ作成
+                        let db = Firestore.firestore()
+                        let key = (url?.deletingPathExtension().lastPathComponent)!
+                        db.collection("movies").document(key).setData(["file_name": key])
+                        
                         self.showAlert(title: "アップロード", message: "アップロードが完了しました。")
                     }, { error in
                         if let e = error as NSError? {
@@ -214,11 +221,6 @@ class MovieSelectViewController: UICollectionViewController, MovieSelectHeaderBu
         self.present(confirmation, animated: true, completion: nil)
     }
     
-    //! Backボタンがおされた時のコールバック
-    func onBack()
-    {
-    }
-    
     // 選択しているファイルをS3へアップロード
     func uploadData(url: URL?, _ complete: @escaping () -> Void, _ failure: @escaping (Error?) -> Void) {
         let data = Bundle.main.infoDictionary! as Dictionary
@@ -241,24 +243,27 @@ class MovieSelectViewController: UICollectionViewController, MovieSelectHeaderBu
     }
     
     func showIndicator() {
-        // インジケータビューの背景
-        let indicatorBackgroundView = UIView(frame: self.view.bounds)
-        indicatorBackgroundView.backgroundColor = UIColor.black
-        indicatorBackgroundView.alpha = 0.4
-        indicatorBackgroundView.tag = 100100
+        // メインスレッドに戻ってUIに絡む
+        DispatchQueue.main.async {
+            // インジケータビューの背景
+            let indicatorBackgroundView = UIView(frame: self.view.bounds)
+            indicatorBackgroundView.backgroundColor = UIColor.black
+            indicatorBackgroundView.alpha = 0.4
+            indicatorBackgroundView.tag = 100100
 
-        let indicator = UIActivityIndicatorView()
-        indicator.activityIndicatorViewStyle = .whiteLarge
-        indicator.center = self.view.center
-        indicator.color = UIColor.white
-        // アニメーション停止と同時に隠す設定
-        indicator.hidesWhenStopped = true
+            let indicator = UIActivityIndicatorView()
+            indicator.activityIndicatorViewStyle = .whiteLarge
+            indicator.center = self.view.center
+            indicator.color = UIColor.white
+            // アニメーション停止と同時に隠す設定
+            indicator.hidesWhenStopped = true
 
-        // 作成したviewを表示
-        indicatorBackgroundView.addSubview(indicator)
-        self.view.addSubview(indicatorBackgroundView)
+            // 作成したviewを表示
+            indicatorBackgroundView.addSubview(indicator)
+            self.view.addSubview(indicatorBackgroundView)
 
-        indicator.startAnimating()
+            indicator.startAnimating()
+        }
     }
 
     func hideIndicator(){

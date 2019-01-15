@@ -116,14 +116,7 @@ class MovieCaptureViewController: UIViewController, AVCaptureFileOutputRecording
     }
 
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
-        // ライブラリへ保存
-        PHPhotoLibrary.shared().performChanges({
-            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: outputFileURL)
-        }) { completed, error in
-            if completed {
-                print("Video is saved!")
-            }
-        }
+        self.performSegue(withIdentifier: "toMovieEdit", sender: nil)
     }
     
     @objc func onClickLibraryButton(sender: UIButton) {

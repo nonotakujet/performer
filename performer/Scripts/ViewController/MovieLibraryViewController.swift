@@ -1,5 +1,5 @@
 //
-//  MovieUploadViewController.swift
+//  MovieLibraryViewController.swift
 //  performer
 //
 //  Created by Taku Nonomura on 2018/09/17.
@@ -9,7 +9,6 @@
 import UIKit
 import Photos
 import PhotosUI
-import AWSS3
 import Firebase
 import FirebaseFirestore
 
@@ -74,19 +73,6 @@ class MovieLibraryViewController: UICollectionViewController, MovieSelectHeaderB
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    // segueで遷移する時に呼ばれる
-    // 次のViewControllerに遷移する際に、パラメータを渡す.
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*
-        guard let destination = segue.destination as? AssetViewController
-            else { fatalError("unexpected view controller for segue") }
-
-        let indexPath = collectionView!.indexPath(for: sender as! UICollectionViewCell)!
-        destination.asset = fetchResult.object(at: indexPath.item)
-        destination.assetCollection = assetCollection
-        */
     }
 
     /*
@@ -185,9 +171,6 @@ class MovieLibraryViewController: UICollectionViewController, MovieSelectHeaderB
         let asset = self.fetchResult.object(at: self.selectedIndex.item)
         asset.getURL(completionHandler: { (url) in
             if (url != nil) {
-                // くるくる表示
-                self.showIndicator()
-                
                 // コピー
                 let destination : URL = Const.getTemporaryMoviePath()
                 DispatchQueue.main.async {
@@ -201,103 +184,19 @@ class MovieLibraryViewController: UICollectionViewController, MovieSelectHeaderB
                         // コピー.
                         try FileManager.default.copyItem(at: url!, to: destination)
 
-                        self.hideIndicator()
                         self.dismiss(animated: true, completion: {() in self.delegate.onSelected(path: destination.path)})
                     }
                     catch
                     {
                         self.showAlert(title: "エラー", message: "ライブラリの動画の選択に失敗しました")
-                        self.hideIndicator()
                     }
                 }
             } else {
                 self.showAlert(title: "エラー", message: "ライブラリの動画の選択に失敗しました")
             }
         })
-/*
-        // アップロード処理
-        self.uploadData(url: url, {
-            // くるくる非表示
-            self.hideIndicator()
-         
-            self.headerView.setPostButtonEnable(isEnabled: false)
-            let currentCell = self.collectionView?.cellForItem(at: self.selectedIndex) as? MovieViewCell
-            currentCell?.isChecked = false
-            self.selectedIndex = nil;
-         
-            // indexデータ作成
-            let db = Firestore.firestore()
-            let key = (url?.deletingPathExtension().lastPathComponent)!
-            db.collection("movies").document(key).setData(["file_name": key])
-         
-            self.showAlert(title: "アップロード", message: "アップロードが完了しました。")
-        }, { error in
-            if let e = error as NSError? {
-                print("localizedDescription:\n\(e.localizedDescription)")
-                print("userInfo:\n\(e.userInfo)")
-            }
-            // くるくる非表示
-            self.hideIndicator()
-            self.showAlert(title: "アップロード", message: "アップロードが失敗しました。")
-        })
-*/
     }
     
-    // 選択しているファイルをS3へアップロード
-    func uploadData(url: URL?, _ complete: @escaping () -> Void, _ failure: @escaping (Error?) -> Void) {
-        let data = Bundle.main.infoDictionary! as Dictionary
-        let bucket = data["Storage Bucket Name"] as! String
-        let uploadRequest = AWSS3TransferManagerUploadRequest()
-        uploadRequest?.body = url!
-        uploadRequest?.key = (url?.lastPathComponent)!
-        uploadRequest?.bucket = bucket
-        let transferManager = AWSS3TransferManager.default()
-        transferManager.upload(uploadRequest!).continueWith { task -> AnyObject? in
-            if let error = task.error as NSError? {
-                print("localizedDescription:\n\(error.localizedDescription)")
-                print("userInfo:\n\(error.userInfo)")
-                failure(error) // 失敗
-            } else {
-                complete() // 成功
-            }
-            return nil
-        }
-    }
-    
-    func showIndicator() {
-        // メインスレッドに戻ってUIに絡む
-        DispatchQueue.main.async {
-            // インジケータビューの背景
-            let indicatorBackgroundView = UIView(frame: self.view.bounds)
-            indicatorBackgroundView.backgroundColor = UIColor.black
-            indicatorBackgroundView.alpha = 0.4
-            indicatorBackgroundView.tag = 100100
-
-            let indicator = UIActivityIndicatorView()
-            indicator.activityIndicatorViewStyle = .whiteLarge
-            indicator.center = self.view.center
-            indicator.color = UIColor.white
-            // アニメーション停止と同時に隠す設定
-            indicator.hidesWhenStopped = true
-
-            // 作成したviewを表示
-            indicatorBackgroundView.addSubview(indicator)
-            self.view.addSubview(indicatorBackgroundView)
-
-            indicator.startAnimating()
-        }
-    }
-
-    func hideIndicator(){
-        // メインスレッドに戻ってUIに絡む
-        DispatchQueue.main.async {
-            // viewにローディング画面が出ていれば閉じる
-            if let viewWithTag = self.view.viewWithTag(100100) {
-                viewWithTag.removeFromSuperview()
-            }
-        }
-    }
-
    // アラート表示
     func showAlert(title: String, message: String) {
         // OKボタンの処理

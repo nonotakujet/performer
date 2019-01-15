@@ -261,6 +261,7 @@
                     <connections>
                         <outlet property="table" destination="yAI-ip-LhH" id="b1q-dG-qTf"/>
                         <outlet property="view" destination="yAI-ip-LhH" id="lsf-p3-8I4"/>
+                        <segue destination="2Uk-6J-AdW" kind="show" identifier="toMovie" id="Gsj-qK-O8O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Bj-Ax-dXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,7 +290,7 @@
         <!--撮影-->
         <scene sceneID="ihy-jk-qtg">
             <objects>
-                <viewController storyboardIdentifier="MovieCapture" id="wXD-pe-tWA" customClass="MovieCaptureViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieCapture" hidesBottomBarWhenPushed="YES" id="wXD-pe-tWA" customClass="MovieCaptureViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1lL-ma-JDS"/>
                         <viewControllerLayoutGuide type="bottom" id="6GH-84-TLI"/>

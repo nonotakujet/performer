@@ -15,7 +15,7 @@ import Firebase
 import FirebaseFirestore
 
 class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayerDelegate {
-    
+
     /// outlet.
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var playButton: UIButton!

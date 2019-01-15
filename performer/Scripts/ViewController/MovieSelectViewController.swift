@@ -13,9 +13,15 @@ import Firebase
 import FirebaseFirestore
 
 class MovieSelectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+
+    struct MovieRecord
+    {
+        var documentId : String
+        var fileName : String
+    }
+
     @IBOutlet var table: UITableView!
-    var movies : [String]!
+    var movies : [MovieRecord]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +34,10 @@ class MovieSelectViewController: UIViewController, UITableViewDataSource, UITabl
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    self.movies.append(document.documentID)
+                    let documentId = document.documentID
+                    let fileName = document.data()["file_name"] as! String
+                    let record : MovieRecord = MovieRecord(documentId: documentId, fileName: fileName)
+                    self.movies.append(record)
                 }
                 self.table.reloadData()
             }
@@ -44,7 +53,8 @@ class MovieSelectViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ table: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // tableCell の ID で UITableViewCell のインスタンスを生成
         guard let cell = table.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as? TopViewCell else { fatalError("unexpected cell in collection view") }
-        cell.setUp(movieId: movies[indexPath.row])
+        let movie = movies[indexPath.row]
+        cell.setUp(movieId: movie.documentId)
         return cell
     }
 
@@ -55,22 +65,15 @@ class MovieSelectViewController: UIViewController, UITableViewDataSource, UITabl
 
     // Touchされた時の処理.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let documentId = movies[indexPath.row]
-        let db = Firestore.firestore()
-        let docRef = db.collection("movies").document(documentId)
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let fileName = document.data()?["file_name"] as! String
-                if (!fileName.isEmpty)
-                {
-                    let storyboard: UIStoryboard = self.storyboard!
-                    let nextView = storyboard.instantiateViewController(withIdentifier: "Movie") as! MovieViewController
-                    nextView.movieId = documentId
-                    nextView.movieFileName = fileName
-                    self.present(nextView, animated: true, completion: nil)
-                }
-            }
-        }
+        self.performSegue(withIdentifier: "toMovie", sender: indexPath)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let indexPath : IndexPath = sender as! IndexPath
+        let movie = movies[indexPath.row]
+        let nextView = segue.destination as! MovieViewController
+        nextView.movieId = movie.documentId
+        nextView.movieFileName = movie.fileName
     }
 
     override func didReceiveMemoryWarning() {

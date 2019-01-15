@@ -118,7 +118,7 @@ class MovieCaptureViewController: UIViewController, AVCaptureFileOutputRecording
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextView = segue.destination as! MovieUploadViewController
+        let nextView = segue.destination as! MovieLibraryViewController
         nextView.delegate = self
     }
 

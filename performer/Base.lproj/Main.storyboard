@@ -121,10 +121,10 @@
             </objects>
             <point key="canvasLocation" x="1948" y="-491"/>
         </scene>
-        <!--Movie Upload View Controller-->
+        <!--Movie Library View Controller-->
         <scene sceneID="UuN-Fw-uI9">
             <objects>
-                <collectionViewController storyboardIdentifier="MovieUpload" modalPresentationStyle="overCurrentContext" id="nvP-AM-qU7" customClass="MovieUploadViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="MovieUpload" modalPresentationStyle="overCurrentContext" id="nvP-AM-qU7" customClass="MovieLibraryViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="p6Q-oI-Eo5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -173,15 +173,15 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="動画投稿" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBB-xD-fwW">
-                                    <rect key="frame" x="174.33333333333334" y="15" width="65.333333333333343" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ライブラリ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBB-xD-fwW">
+                                    <rect key="frame" x="166.33333333333334" y="15" width="81.666666666666657" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZf-we-vvf" userLabel="PostButton">
                                     <rect key="frame" x="355" y="10" width="31" height="30"/>
-                                    <state key="normal" title="投稿"/>
+                                    <state key="normal" title="選択"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qo-b2-6V0">
                                     <rect key="frame" x="28" y="6" width="30" height="38"/>

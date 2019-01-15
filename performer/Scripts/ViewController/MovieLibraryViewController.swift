@@ -20,7 +20,7 @@ protocol LibraryDelegate {
     func onSelected(path: String)
     func onBack()
 }
-class MovieUploadViewController: UICollectionViewController, MovieSelectHeaderButtonDelegate {
+class MovieLibraryViewController: UICollectionViewController, MovieSelectHeaderButtonDelegate {
 
     var fetchResult: PHFetchResult<PHAsset>!
     var assetCollection: PHAssetCollection!
@@ -183,80 +183,66 @@ class MovieUploadViewController: UICollectionViewController, MovieSelectHeaderBu
     //! Postボタンがおされた時のコールバック
     func onPost()
     {
-        // 送信ボタンの処理
-        let postAction = UIAlertAction(title: "アップロード", style: .default, handler: {
-          [] (action: UIAlertAction!) -> Void in
-            // Configure the cell
-            let asset = self.fetchResult.object(at: self.selectedIndex.item)
-            asset.getURL(completionHandler: { (url) in
-                if (url != nil) {
-                    // くるくる表示
-                    self.showIndicator()
-                    
-                    // コピー
-                    let destination : URL = Const.getTemporaryMoviePath()
-                    DispatchQueue.main.async {
-                        do
+        let asset = self.fetchResult.object(at: self.selectedIndex.item)
+        asset.getURL(completionHandler: { (url) in
+            if (url != nil) {
+                // くるくる表示
+                self.showIndicator()
+                
+                // コピー
+                let destination : URL = Const.getTemporaryMoviePath()
+                DispatchQueue.main.async {
+                    do
+                    {
+                        // ファイルがすでに存在していたら削除.
+                        if (FileManager.default.fileExists(atPath: destination.path))
                         {
-                            // ファイルがすでに存在していたら削除.
-                            if (FileManager.default.fileExists(atPath: destination.path))
-                            {
-                                try FileManager.default.removeItem(at: destination)
-                            }
-                            // コピー.
-                            try FileManager.default.copyItem(at: url!, to: destination)
+                            try FileManager.default.removeItem(at: destination)
+                        }
+                        // コピー.
+                        try FileManager.default.copyItem(at: url!, to: destination)
 
-                            self.hideIndicator()
-                            self.delegate.onSelected(path: destination.path)
-                            self.dismiss(animated: true, completion: nil)
-                        }
-                        catch
-                        {
-                            self.showAlert(title: "アップロード", message: "アップロードが失敗しました。")
-                            self.hideIndicator()
-                        }
+                        self.hideIndicator()
+                        self.delegate.onSelected(path: destination.path)
+                        self.dismiss(animated: true, completion: nil)
                     }
-/*
-                    // アップロード処理
-                    self.uploadData(url: url, {
-                        // くるくる非表示
+                    catch
+                    {
+                        self.showAlert(title: "エラー", message: "ライブラリの動画の選択に失敗しました")
                         self.hideIndicator()
-                        
-                        self.headerView.setPostButtonEnable(isEnabled: false)
-                        let currentCell = self.collectionView?.cellForItem(at: self.selectedIndex) as? MovieViewCell
-                        currentCell?.isChecked = false
-                        self.selectedIndex = nil;
-                        
-                        // indexデータ作成
-                        let db = Firestore.firestore()
-                        let key = (url?.deletingPathExtension().lastPathComponent)!
-                        db.collection("movies").document(key).setData(["file_name": key])
-                        
-                        self.showAlert(title: "アップロード", message: "アップロードが完了しました。")
-                    }, { error in
-                        if let e = error as NSError? {
-                            print("localizedDescription:\n\(e.localizedDescription)")
-                            print("userInfo:\n\(e.userInfo)")
-                        }
-                        // くるくる非表示
-                        self.hideIndicator()
-                        self.showAlert(title: "アップロード", message: "アップロードが失敗しました。")
-                    })
-*/
-                } else {
-                    self.showAlert(title: "アップロード", message: "アップロードが失敗しました。")
+                    }
                 }
-            })
+            } else {
+                self.showAlert(title: "エラー", message: "ライブラリの動画の選択に失敗しました")
+            }
         })
-
-        // キャンセルボタンの処理
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
-
-        // 送信確認
-        let confirmation = UIAlertController(title: "確認", message: "アップロードしてもいいですか？", preferredStyle: .alert)
-        confirmation.addAction(postAction)
-        confirmation.addAction(cancelAction)
-        self.present(confirmation, animated: true, completion: nil)
+/*
+        // アップロード処理
+        self.uploadData(url: url, {
+            // くるくる非表示
+            self.hideIndicator()
+         
+            self.headerView.setPostButtonEnable(isEnabled: false)
+            let currentCell = self.collectionView?.cellForItem(at: self.selectedIndex) as? MovieViewCell
+            currentCell?.isChecked = false
+            self.selectedIndex = nil;
+         
+            // indexデータ作成
+            let db = Firestore.firestore()
+            let key = (url?.deletingPathExtension().lastPathComponent)!
+            db.collection("movies").document(key).setData(["file_name": key])
+         
+            self.showAlert(title: "アップロード", message: "アップロードが完了しました。")
+        }, { error in
+            if let e = error as NSError? {
+                print("localizedDescription:\n\(e.localizedDescription)")
+                print("userInfo:\n\(e.userInfo)")
+            }
+            // くるくる非表示
+            self.hideIndicator()
+            self.showAlert(title: "アップロード", message: "アップロードが失敗しました。")
+        })
+*/
     }
     
     // 選択しているファイルをS3へアップロード
@@ -406,7 +392,7 @@ private extension UICollectionView {
 }
 
 // MARK: PHPhotoLibraryChangeObserver
-extension MovieUploadViewController: PHPhotoLibraryChangeObserver {
+extension MovieLibraryViewController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
 
         guard let changes = changeInstance.changeDetails(for: fetchResult)

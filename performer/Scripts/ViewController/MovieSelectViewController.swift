@@ -25,9 +25,10 @@ class MovieSelectViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        movies = []
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        movies = []
         let db = Firestore.firestore()
         db.collection("movies").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -43,7 +44,7 @@ class MovieSelectViewController: UIViewController, UITableViewDataSource, UITabl
             }
         }
     }
-    
+
     //Table Viewのセルの数を指定
     func tableView(_ table: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count

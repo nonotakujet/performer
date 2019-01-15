@@ -419,6 +419,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="xqB-20-dET" id="9Kt-qr-M6A"/>
+                        <segue destination="iYU-gZ-95n" kind="show" identifier="toTop" id="5b8-s7-PJ4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ae2-tU-5ey" userLabel="First Responder" sceneMemberID="firstResponder"/>

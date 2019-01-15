@@ -14,7 +14,6 @@ import FirebaseFirestore
 import AWSS3
 
 class MovieUploadViewController: UIViewController {
-
     var uploadButton : UIButton!
     @IBOutlet weak var backButton: UIButton!
     
@@ -75,7 +74,7 @@ class MovieUploadViewController: UIViewController {
             let db = Firestore.firestore()
             db.collection("movies").document(fileKey).setData(["file_name": fileKey])
          
-            self.showAlert(title: "アップロード", message: "アップロードが完了しました。")
+            self.showAlert(title: "アップロード", message: "アップロードが完了しました。", handler: {(action) in             self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)})
         }, { error in
             if let e = error as NSError? {
                 print("localizedDescription:\n\(e.localizedDescription)")
@@ -85,7 +84,6 @@ class MovieUploadViewController: UIViewController {
             self.hideIndicator()
             self.showAlert(title: "アップロード", message: "アップロードが失敗しました。")
         })
-
     }
 
     func showIndicator() {
@@ -123,9 +121,9 @@ class MovieUploadViewController: UIViewController {
     }
 
    // アラート表示
-    func showAlert(title: String, message: String) {
+    func showAlert(title: String, message: String, handler: ((UIAlertAction) -> Void)? = nil) {
         // OKボタンの処理
-        let defaultAction = UIAlertAction(title: "OK", style: .default)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: handler)
 
         // アラート表示
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -136,6 +134,9 @@ class MovieUploadViewController: UIViewController {
     /// backボタンが押された時のcallback.
     @objc func onBackButtonClick(sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
 
     override func didReceiveMemoryWarning() {

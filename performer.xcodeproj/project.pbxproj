@@ -47,6 +47,9 @@
 		6AB371DA2097167C00DD2B38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AB371D82097167C00DD2B38 /* LaunchScreen.storyboard */; };
 		6AB371E52097167C00DD2B38 /* performerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB371E42097167C00DD2B38 /* performerTests.swift */; };
 		6AB371F02097167C00DD2B38 /* performerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB371EF2097167C00DD2B38 /* performerUITests.swift */; };
+		6ABD250621EDE9D7007091C7 /* MovieEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD250521EDE9D7007091C7 /* MovieEditViewController.swift */; };
+		6ABD250721EDE9D7007091C7 /* MovieEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD250521EDE9D7007091C7 /* MovieEditViewController.swift */; };
+		6ABD250821EDE9D7007091C7 /* MovieEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD250521EDE9D7007091C7 /* MovieEditViewController.swift */; };
 		6ABF33B020D3F29E00DB3E96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8A633A20CD68EC009AB53C /* AppDelegate.swift */; };
 		6ABF33B120D3F29E00DB3E96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8A633A20CD68EC009AB53C /* AppDelegate.swift */; };
 		6AC3997120D3ED1100261025 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC3997020D3ED1100261025 /* ArrayExtension.swift */; };
@@ -122,6 +125,7 @@
 		6AB371EB2097167C00DD2B38 /* performerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = performerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB371EF2097167C00DD2B38 /* performerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = performerUITests.swift; sourceTree = "<group>"; };
 		6AB371F12097167C00DD2B38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6ABD250521EDE9D7007091C7 /* MovieEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEditViewController.swift; sourceTree = "<group>"; };
 		6AC3997020D3ED1100261025 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		6AC7C5B720D5258F00CD5494 /* ReactionSaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionSaveData.swift; sourceTree = "<group>"; };
 		6AEB239C21DB5BA7008B2F4D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 				6A53FB48214F98350054A8C2 /* MovieLibraryViewController.swift */,
 				6A53FB5F21612ECC0054A8C2 /* MovieSelectViewController.swift */,
 				6AEB23AD21DC1427008B2F4D /* MovieCaptureViewController.swift */,
+				6ABD250521EDE9D7007091C7 /* MovieEditViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -577,6 +582,7 @@
 				6AC3997120D3ED1100261025 /* ArrayExtension.swift in Sources */,
 				6A8A633D20CD68EC009AB53C /* AppDelegate.swift in Sources */,
 				6A53FB582160902E0054A8C2 /* PHAssetExtention.swift in Sources */,
+				6ABD250621EDE9D7007091C7 /* MovieEditViewController.swift in Sources */,
 				6A53FB4D214F9F840054A8C2 /* MovieViewCell.swift in Sources */,
 				6AEB239D21DB5BA7008B2F4D /* UIImageView.swift in Sources */,
 				6AC7C5B820D5258F00CD5494 /* ReactionSaveData.swift in Sources */,
@@ -603,6 +609,7 @@
 				6AC7C5B920D5258F00CD5494 /* ReactionSaveData.swift in Sources */,
 				6A53FB4E214F9F840054A8C2 /* MovieViewCell.swift in Sources */,
 				6A53FB5D21612DF90054A8C2 /* TopViewCell.swift in Sources */,
+				6ABD250721EDE9D7007091C7 /* MovieEditViewController.swift in Sources */,
 				6AEB239E21DB5BA7008B2F4D /* UIImageView.swift in Sources */,
 				6A53FB592160902E0054A8C2 /* PHAssetExtention.swift in Sources */,
 			);
@@ -623,6 +630,7 @@
 				6AC7C5BA20D5258F00CD5494 /* ReactionSaveData.swift in Sources */,
 				6A53FB4F214F9F840054A8C2 /* MovieViewCell.swift in Sources */,
 				6A53FB5E21612DF90054A8C2 /* TopViewCell.swift in Sources */,
+				6ABD250821EDE9D7007091C7 /* MovieEditViewController.swift in Sources */,
 				6AEB239F21DB5BA7008B2F4D /* UIImageView.swift in Sources */,
 				6A53FB5A2160902E0054A8C2 /* PHAssetExtention.swift in Sources */,
 			);

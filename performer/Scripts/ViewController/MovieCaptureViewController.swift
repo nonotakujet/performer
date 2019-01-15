@@ -19,6 +19,19 @@ class MovieCaptureViewController: UIViewController, AVCaptureFileOutputRecording
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // 一時ファイルがすでに存在していたら削除.
+        do
+        {
+            if (FileManager.default.fileExists(atPath: Const.getTemporaryMoviePath().path))
+            {
+                try FileManager.default.removeItem(at: Const.getTemporaryMoviePath())
+            }
+        }
+        catch {
+            print("一時ファイルの削除に失敗しました")
+        }
+
         setUpPreview()
     }
 
@@ -117,18 +130,25 @@ class MovieCaptureViewController: UIViewController, AVCaptureFileOutputRecording
         self.performSegue(withIdentifier: "toMovieLibrary", sender: nil)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextView = segue.destination as! MovieLibraryViewController
-        nextView.delegate = self
-    }
-
     /// ライブラリで選択された時のコールバック
     ///
     /// - Parameter path: 保存されたパス
     func onSelected(path: String) {
-
+        self.performSegue(withIdentifier: "toMovieEdit", sender: nil)
     }
-    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toMovieLibrary")
+        {
+            let nextView = segue.destination as! MovieLibraryViewController
+            nextView.delegate = self
+        } else if (segue.identifier == "toMovieEdit")
+        {
+        
+        }
+    }
+
+
     /// ライブラリから選択されずに戻ったときのコールバック
     func onBack() {
 

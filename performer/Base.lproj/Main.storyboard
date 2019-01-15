@@ -22,9 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgt-8Y-Xxn" userLabel="BackButton">
-                                <rect key="frame" x="6" y="28" width="56" height="34"/>
+                                <rect key="frame" x="20" y="27" width="30" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="&lt; Back">
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="×">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
@@ -47,12 +48,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="AvL-ZB-5HC"/>
-                            <constraint firstItem="Z0b-vT-RB1" firstAttribute="top" secondItem="f6Z-Ej-hLh" secondAttribute="bottom" constant="37" id="Jcm-nE-iak"/>
                             <constraint firstItem="f6Z-Ej-hLh" firstAttribute="top" secondItem="2vv-cO-6dE" secondAttribute="top" constant="571" id="RAi-uq-JC3"/>
-                            <constraint firstItem="X8O-4l-cho" firstAttribute="top" secondItem="SON-kf-zNN" secondAttribute="bottom" constant="581" id="Z7J-1a-T2z"/>
+                            <constraint firstItem="X8O-4l-cho" firstAttribute="top" secondItem="SON-kf-zNN" secondAttribute="bottom" constant="581" id="W3R-6g-9Au"/>
                             <constraint firstItem="f6Z-Ej-hLh" firstAttribute="leading" secondItem="2vv-cO-6dE" secondAttribute="leading" constant="17" id="dkb-5y-uf1"/>
                             <constraint firstItem="f6Z-Ej-hLh" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="oMt-KX-L1m"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="qjL-G7-3SQ"/>
+                            <constraint firstItem="Z0b-vT-RB1" firstAttribute="top" secondItem="f6Z-Ej-hLh" secondAttribute="bottom" constant="37" id="wAQ-SX-rpf"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="yQ9-go-alu"/>
                         </constraints>
                     </view>
@@ -210,7 +211,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwA-Z0-PkY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1948" y="452"/>
+            <point key="canvasLocation" x="1022" y="1261"/>
         </scene>
         <!--動画一覧-->
         <scene sceneID="FFR-gF-V8x">
@@ -310,11 +311,58 @@
                     <connections>
                         <outlet property="reactionView" destination="djG-z3-PSE" id="ZUd-wb-x0W"/>
                         <segue destination="nvP-AM-qU7" kind="presentation" identifier="toMovieLibrary" modalPresentationStyle="overCurrentContext" id="DKF-qq-F3O"/>
+                        <segue destination="FKd-Y0-9ub" kind="show" identifier="toMovieEdit" id="wC9-3a-JF2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dl5-75-G00" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1022" y="453"/>
+        </scene>
+        <!--Movie Edit View Controller-->
+        <scene sceneID="e90-u5-v5E">
+            <objects>
+                <viewController id="FKd-Y0-9ub" customClass="MovieEditViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CiH-Ek-3X3"/>
+                        <viewControllerLayoutGuide type="bottom" id="arN-tF-CHJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pYl-4x-swf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="編集モード (仮)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jct-0k-3H4">
+                                <rect key="frame" x="120.00000000000001" y="40" width="174.33333333333337" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9i-EJ-lSQ" userLabel="BackButton">
+                                <rect key="frame" x="30" y="30" width="30" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="112-55-dEH"/>
+                                    <constraint firstAttribute="width" constant="30" id="yHs-hJ-kgD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="×">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Q9i-EJ-lSQ" firstAttribute="top" secondItem="CiH-Ek-3X3" secondAttribute="bottom" constant="10" id="EfY-fW-dwV"/>
+                            <constraint firstItem="Q9i-EJ-lSQ" firstAttribute="leading" secondItem="pYl-4x-swf" secondAttribute="leadingMargin" constant="10" id="dkR-I2-2Ba"/>
+                            <constraint firstItem="jct-0k-3H4" firstAttribute="centerX" secondItem="pYl-4x-swf" secondAttribute="centerX" id="pqW-I3-5vE"/>
+                            <constraint firstItem="jct-0k-3H4" firstAttribute="top" secondItem="CiH-Ek-3X3" secondAttribute="bottom" constant="20" id="vvh-Tt-aDo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="Q9i-EJ-lSQ" id="Nqu-Wc-Jrb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nlM-MQ-j4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1948" y="452"/>
         </scene>
     </scenes>
     <resources>

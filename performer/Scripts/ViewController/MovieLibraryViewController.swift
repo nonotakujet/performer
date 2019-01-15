@@ -176,8 +176,7 @@ class MovieLibraryViewController: UICollectionViewController, MovieSelectHeaderB
     //! 戻るボタンがおされた時のコールバック
     func onBack()
     {
-        self.delegate.onBack()
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: { () in self.delegate.onBack()})
     }
 
     //! Postボタンがおされた時のコールバック
@@ -203,8 +202,7 @@ class MovieLibraryViewController: UICollectionViewController, MovieSelectHeaderB
                         try FileManager.default.copyItem(at: url!, to: destination)
 
                         self.hideIndicator()
-                        self.delegate.onSelected(path: destination.path)
-                        self.dismiss(animated: true, completion: nil)
+                        self.dismiss(animated: true, completion: {() in self.delegate.onSelected(path: destination.path)})
                     }
                     catch
                     {

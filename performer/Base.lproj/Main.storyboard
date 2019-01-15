@@ -22,9 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgt-8Y-Xxn" userLabel="BackButton">
-                                <rect key="frame" x="6" y="28" width="56" height="34"/>
+                                <rect key="frame" x="20" y="27" width="30" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="&lt; Back">
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="×">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
@@ -47,12 +48,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="AvL-ZB-5HC"/>
-                            <constraint firstItem="Z0b-vT-RB1" firstAttribute="top" secondItem="f6Z-Ej-hLh" secondAttribute="bottom" constant="37" id="Jcm-nE-iak"/>
                             <constraint firstItem="f6Z-Ej-hLh" firstAttribute="top" secondItem="2vv-cO-6dE" secondAttribute="top" constant="571" id="RAi-uq-JC3"/>
-                            <constraint firstItem="X8O-4l-cho" firstAttribute="top" secondItem="SON-kf-zNN" secondAttribute="bottom" constant="581" id="Z7J-1a-T2z"/>
+                            <constraint firstItem="X8O-4l-cho" firstAttribute="top" secondItem="SON-kf-zNN" secondAttribute="bottom" constant="581" id="W3R-6g-9Au"/>
                             <constraint firstItem="f6Z-Ej-hLh" firstAttribute="leading" secondItem="2vv-cO-6dE" secondAttribute="leading" constant="17" id="dkb-5y-uf1"/>
                             <constraint firstItem="f6Z-Ej-hLh" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="oMt-KX-L1m"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="qjL-G7-3SQ"/>
+                            <constraint firstItem="Z0b-vT-RB1" firstAttribute="top" secondItem="f6Z-Ej-hLh" secondAttribute="bottom" constant="37" id="wAQ-SX-rpf"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="yQ9-go-alu"/>
                         </constraints>
                     </view>
@@ -121,10 +122,10 @@
             </objects>
             <point key="canvasLocation" x="1948" y="-491"/>
         </scene>
-        <!--動画投稿-->
+        <!--Movie Library View Controller-->
         <scene sceneID="UuN-Fw-uI9">
             <objects>
-                <collectionViewController storyboardIdentifier="MovieSelect" id="nvP-AM-qU7" customClass="MovieUploadViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="MovieUpload" modalPresentationStyle="overCurrentContext" id="nvP-AM-qU7" customClass="MovieLibraryViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="p6Q-oI-Eo5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -173,24 +174,32 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="動画投稿" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBB-xD-fwW">
-                                    <rect key="frame" x="174.33333333333334" y="15" width="65.333333333333343" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ライブラリ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBB-xD-fwW">
+                                    <rect key="frame" x="166.33333333333334" y="15" width="81.666666666666657" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZf-we-vvf" userLabel="PostButton">
                                     <rect key="frame" x="355" y="10" width="31" height="30"/>
-                                    <state key="normal" title="投稿"/>
+                                    <state key="normal" title="選択"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qo-b2-6V0">
+                                    <rect key="frame" x="28" y="6" width="30" height="38"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                    <state key="normal" title="×"/>
                                 </button>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="6Qo-b2-6V0" firstAttribute="leading" secondItem="2vr-GB-q3u" secondAttribute="leadingMargin" constant="20" id="6qG-gZ-P3T"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="oZf-we-vvf" secondAttribute="trailing" constant="20" id="7sd-EQ-0qA"/>
                                 <constraint firstItem="qBB-xD-fwW" firstAttribute="centerX" secondItem="2vr-GB-q3u" secondAttribute="centerX" id="9lu-VX-ph2"/>
+                                <constraint firstItem="6Qo-b2-6V0" firstAttribute="centerY" secondItem="2vr-GB-q3u" secondAttribute="centerY" id="ZsF-x4-xP8"/>
                                 <constraint firstItem="oZf-we-vvf" firstAttribute="centerY" secondItem="2vr-GB-q3u" secondAttribute="centerY" id="wgU-4N-fIc"/>
                                 <constraint firstItem="qBB-xD-fwW" firstAttribute="centerY" secondItem="2vr-GB-q3u" secondAttribute="centerY" id="ylc-t2-MuW"/>
                             </constraints>
                             <connections>
+                                <outlet property="backButton" destination="6Qo-b2-6V0" id="nB8-0x-MsU"/>
                                 <outlet property="postButton" destination="oZf-we-vvf" id="Vg7-Cb-h6S"/>
                             </connections>
                         </collectionReusableView>
@@ -199,16 +208,15 @@
                             <outlet property="delegate" destination="nvP-AM-qU7" id="SyS-CC-iAX"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="動画投稿" id="7xM-Sk-rF3"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwA-Z0-PkY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1023" y="240"/>
+            <point key="canvasLocation" x="1022" y="1261"/>
         </scene>
         <!--動画一覧-->
         <scene sceneID="FFR-gF-V8x">
             <objects>
-                <viewController storyboardIdentifier="MovieIndex" id="dN6-e1-rnB" customClass="MovieSelectViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieSelect" id="dN6-e1-rnB" customClass="MovieSelectViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="yAI-ip-LhH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -261,6 +269,7 @@
                     <connections>
                         <outlet property="table" destination="yAI-ip-LhH" id="b1q-dG-qTf"/>
                         <outlet property="view" destination="yAI-ip-LhH" id="lsf-p3-8I4"/>
+                        <segue destination="2Uk-6J-AdW" kind="show" identifier="toMovie" id="Gsj-qK-O8O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Bj-Ax-dXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -278,12 +287,143 @@
                     </tabBar>
                     <connections>
                         <segue destination="dN6-e1-rnB" kind="relationship" relationship="viewControllers" id="cEV-Xk-mnu"/>
-                        <segue destination="nvP-AM-qU7" kind="relationship" relationship="viewControllers" id="Jdb-U4-TWB"/>
+                        <segue destination="wXD-pe-tWA" kind="relationship" relationship="viewControllers" id="gBb-Uq-ga2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iKO-py-fmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-230" y="-86"/>
+        </scene>
+        <!--撮影-->
+        <scene sceneID="ihy-jk-qtg">
+            <objects>
+                <viewController storyboardIdentifier="MovieCapture" hidesBottomBarWhenPushed="YES" id="wXD-pe-tWA" customClass="MovieCaptureViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1lL-ma-JDS"/>
+                        <viewControllerLayoutGuide type="bottom" id="6GH-84-TLI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="agV-mz-AGK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="撮影" id="kAt-rE-8bs"/>
+                    <connections>
+                        <outlet property="reactionView" destination="djG-z3-PSE" id="ZUd-wb-x0W"/>
+                        <segue destination="nvP-AM-qU7" kind="presentation" identifier="toMovieLibrary" modalPresentationStyle="overCurrentContext" id="DKF-qq-F3O"/>
+                        <segue destination="FKd-Y0-9ub" kind="show" identifier="toMovieEdit" id="wC9-3a-JF2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dl5-75-G00" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1022" y="453"/>
+        </scene>
+        <!--Movie Edit View Controller-->
+        <scene sceneID="e90-u5-v5E">
+            <objects>
+                <viewController id="FKd-Y0-9ub" customClass="MovieEditViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CiH-Ek-3X3"/>
+                        <viewControllerLayoutGuide type="bottom" id="arN-tF-CHJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pYl-4x-swf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="編集モード (仮)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jct-0k-3H4">
+                                <rect key="frame" x="120.00000000000001" y="40" width="174.33333333333337" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9i-EJ-lSQ" userLabel="BackButton">
+                                <rect key="frame" x="30" y="30" width="30" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="112-55-dEH"/>
+                                    <constraint firstAttribute="width" constant="30" id="yHs-hJ-kgD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="×">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Q9i-EJ-lSQ" firstAttribute="top" secondItem="CiH-Ek-3X3" secondAttribute="bottom" constant="10" id="EfY-fW-dwV"/>
+                            <constraint firstItem="Q9i-EJ-lSQ" firstAttribute="leading" secondItem="pYl-4x-swf" secondAttribute="leadingMargin" constant="10" id="dkR-I2-2Ba"/>
+                            <constraint firstItem="jct-0k-3H4" firstAttribute="centerX" secondItem="pYl-4x-swf" secondAttribute="centerX" id="pqW-I3-5vE"/>
+                            <constraint firstItem="jct-0k-3H4" firstAttribute="top" secondItem="CiH-Ek-3X3" secondAttribute="bottom" constant="20" id="vvh-Tt-aDo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="Q9i-EJ-lSQ" id="Nqu-Wc-Jrb"/>
+                        <segue destination="iQD-6o-6Qy" kind="show" identifier="toMovieUpload" id="bnB-Sm-vRJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nlM-MQ-j4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1948" y="452"/>
+        </scene>
+        <!--Movie Upload View Controller-->
+        <scene sceneID="suO-xn-E21">
+            <objects>
+                <viewController id="iQD-6o-6Qy" customClass="MovieUploadViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lg7-Ya-08N"/>
+                        <viewControllerLayoutGuide type="bottom" id="QIo-Rt-YKA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F2q-VF-LUy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投稿" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsH-n9-0YA">
+                                <rect key="frame" x="181.66666666666666" y="40" width="51" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqB-20-dET" userLabel="BackButton">
+                                <rect key="frame" x="30" y="30" width="30" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="×">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jF-LR-uFV">
+                                <rect key="frame" x="57" y="320" width="300" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Fxg-qU-v1k"/>
+                                    <constraint firstAttribute="width" constant="300" id="kl7-UY-e35"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="ここでコメントとかハッシュタグとか追加します">
+                                        <attributes>
+                                            <font key="NSFont" size="23" name=".HiraKakuInterface-W3"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4jF-LR-uFV" firstAttribute="top" secondItem="lg7-Ya-08N" secondAttribute="bottom" constant="300" id="3yh-TS-P4Q"/>
+                            <constraint firstItem="xqB-20-dET" firstAttribute="leading" secondItem="F2q-VF-LUy" secondAttribute="leadingMargin" constant="10" id="6G3-nX-zFo"/>
+                            <constraint firstItem="xqB-20-dET" firstAttribute="top" secondItem="lg7-Ya-08N" secondAttribute="bottom" constant="10" id="XHl-ZI-TrS"/>
+                            <constraint firstItem="lsH-n9-0YA" firstAttribute="top" secondItem="lg7-Ya-08N" secondAttribute="bottom" constant="20" id="bvJ-Fu-moi"/>
+                            <constraint firstItem="lsH-n9-0YA" firstAttribute="centerX" secondItem="F2q-VF-LUy" secondAttribute="centerX" id="pfO-AA-OiL"/>
+                            <constraint firstItem="4jF-LR-uFV" firstAttribute="centerX" secondItem="F2q-VF-LUy" secondAttribute="centerX" id="q1i-yj-sjs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="xqB-20-dET" id="9Kt-qr-M6A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ae2-tU-5ey" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2735" y="447"/>
         </scene>
     </scenes>
     <resources>

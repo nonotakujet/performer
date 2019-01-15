@@ -121,10 +121,10 @@
             </objects>
             <point key="canvasLocation" x="1948" y="-491"/>
         </scene>
-        <!--動画投稿-->
+        <!--Movie Upload View Controller-->
         <scene sceneID="UuN-Fw-uI9">
             <objects>
-                <collectionViewController storyboardIdentifier="MovieUpload" id="nvP-AM-qU7" customClass="MovieUploadViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="MovieUpload" modalPresentationStyle="overCurrentContext" id="nvP-AM-qU7" customClass="MovieUploadViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="p6Q-oI-Eo5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,14 +183,22 @@
                                     <rect key="frame" x="355" y="10" width="31" height="30"/>
                                     <state key="normal" title="投稿"/>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qo-b2-6V0">
+                                    <rect key="frame" x="28" y="6" width="30" height="38"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                    <state key="normal" title="×"/>
+                                </button>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="6Qo-b2-6V0" firstAttribute="leading" secondItem="2vr-GB-q3u" secondAttribute="leadingMargin" constant="20" id="6qG-gZ-P3T"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="oZf-we-vvf" secondAttribute="trailing" constant="20" id="7sd-EQ-0qA"/>
                                 <constraint firstItem="qBB-xD-fwW" firstAttribute="centerX" secondItem="2vr-GB-q3u" secondAttribute="centerX" id="9lu-VX-ph2"/>
+                                <constraint firstItem="6Qo-b2-6V0" firstAttribute="centerY" secondItem="2vr-GB-q3u" secondAttribute="centerY" id="ZsF-x4-xP8"/>
                                 <constraint firstItem="oZf-we-vvf" firstAttribute="centerY" secondItem="2vr-GB-q3u" secondAttribute="centerY" id="wgU-4N-fIc"/>
                                 <constraint firstItem="qBB-xD-fwW" firstAttribute="centerY" secondItem="2vr-GB-q3u" secondAttribute="centerY" id="ylc-t2-MuW"/>
                             </constraints>
                             <connections>
+                                <outlet property="backButton" destination="6Qo-b2-6V0" id="nB8-0x-MsU"/>
                                 <outlet property="postButton" destination="oZf-we-vvf" id="Vg7-Cb-h6S"/>
                             </connections>
                         </collectionReusableView>
@@ -199,11 +207,10 @@
                             <outlet property="delegate" destination="nvP-AM-qU7" id="SyS-CC-iAX"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="動画投稿" id="7xM-Sk-rF3"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwA-Z0-PkY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1023" y="240"/>
+            <point key="canvasLocation" x="1948" y="452"/>
         </scene>
         <!--動画一覧-->
         <scene sceneID="FFR-gF-V8x">
@@ -279,7 +286,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="dN6-e1-rnB" kind="relationship" relationship="viewControllers" id="cEV-Xk-mnu"/>
-                        <segue destination="nvP-AM-qU7" kind="relationship" relationship="viewControllers" id="Jdb-U4-TWB"/>
                         <segue destination="wXD-pe-tWA" kind="relationship" relationship="viewControllers" id="gBb-Uq-ga2"/>
                     </connections>
                 </tabBarController>
@@ -303,11 +309,12 @@
                     <tabBarItem key="tabBarItem" title="撮影" id="kAt-rE-8bs"/>
                     <connections>
                         <outlet property="reactionView" destination="djG-z3-PSE" id="ZUd-wb-x0W"/>
+                        <segue destination="nvP-AM-qU7" kind="presentation" identifier="toMovieLibrary" id="DKF-qq-F3O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dl5-75-G00" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1022" y="1006"/>
+            <point key="canvasLocation" x="1022" y="453"/>
         </scene>
     </scenes>
     <resources>

@@ -28,7 +28,6 @@ class MovieUploadViewController: UICollectionViewController, MovieSelectHeaderBu
     fileprivate var previousPreheatRect = CGRect.zero
 
     override func viewDidLoad() {
-        super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -41,6 +40,8 @@ class MovieUploadViewController: UICollectionViewController, MovieSelectHeaderBu
             allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
             fetchResult = PHAsset.fetchAssets(with: .video, options: allPhotosOptions)
         }
+
+        super.viewDidLoad()
     }
 
     // TODO : nonomura - 調査
@@ -166,6 +167,12 @@ class MovieUploadViewController: UICollectionViewController, MovieSelectHeaderBu
     }
 
     // MARK: MovieSelectHeaderButtonDelegate
+
+    //! 戻るボタンがおされた時のコールバック
+    func onBack()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
 
     //! Postボタンがおされた時のコールバック
     func onPost()

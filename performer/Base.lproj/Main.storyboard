@@ -309,7 +309,7 @@
                     <tabBarItem key="tabBarItem" title="撮影" id="kAt-rE-8bs"/>
                     <connections>
                         <outlet property="reactionView" destination="djG-z3-PSE" id="ZUd-wb-x0W"/>
-                        <segue destination="nvP-AM-qU7" kind="presentation" identifier="toMovieLibrary" id="DKF-qq-F3O"/>
+                        <segue destination="nvP-AM-qU7" kind="presentation" identifier="toMovieLibrary" modalPresentationStyle="overCurrentContext" id="DKF-qq-F3O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dl5-75-G00" userLabel="First Responder" sceneMemberID="firstResponder"/>

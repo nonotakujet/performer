@@ -16,12 +16,17 @@ import FirebaseFirestore
 private let cellReuseIdentifier = "cell"
 private let headerReuseIdentifier = "SectionHeader"
 
+protocol LibraryDelegate {
+    func onSelected(path: String)
+    func onBack()
+}
 class MovieUploadViewController: UICollectionViewController, MovieSelectHeaderButtonDelegate {
 
     var fetchResult: PHFetchResult<PHAsset>!
     var assetCollection: PHAssetCollection!
     var headerView: MovieSelectHeaderView!
-    var selectedIndex: IndexPath!;
+    var selectedIndex: IndexPath!
+    var delegate: LibraryDelegate!
 
     fileprivate let imageManager = PHCachingImageManager()
     fileprivate var thumbnailSize: CGSize!
@@ -171,6 +176,7 @@ class MovieUploadViewController: UICollectionViewController, MovieSelectHeaderBu
     //! 戻るボタンがおされた時のコールバック
     func onBack()
     {
+        self.delegate.onBack()
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -187,6 +193,30 @@ class MovieUploadViewController: UICollectionViewController, MovieSelectHeaderBu
                     // くるくる表示
                     self.showIndicator()
                     
+                    // コピー
+                    let destination : URL = Const.getTemporaryMoviePath()
+                    DispatchQueue.main.async {
+                        do
+                        {
+                            // ファイルがすでに存在していたら削除.
+                            if (FileManager.default.fileExists(atPath: destination.path))
+                            {
+                                try FileManager.default.removeItem(at: destination)
+                            }
+                            // コピー.
+                            try FileManager.default.copyItem(at: url!, to: destination)
+
+                            self.hideIndicator()
+                            self.delegate.onSelected(path: destination.path)
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                        catch
+                        {
+                            self.showAlert(title: "アップロード", message: "アップロードが失敗しました。")
+                            self.hideIndicator()
+                        }
+                    }
+/*
                     // アップロード処理
                     self.uploadData(url: url, {
                         // くるくる非表示
@@ -212,6 +242,7 @@ class MovieUploadViewController: UICollectionViewController, MovieSelectHeaderBu
                         self.hideIndicator()
                         self.showAlert(title: "アップロード", message: "アップロードが失敗しました。")
                     })
+*/
                 } else {
                     self.showAlert(title: "アップロード", message: "アップロードが失敗しました。")
                 }

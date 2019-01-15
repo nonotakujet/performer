@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 import Photos
 
-class MovieCaptureViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
+class MovieCaptureViewController: UIViewController, AVCaptureFileOutputRecordingDelegate, LibraryDelegate {
     let fileOutput = AVCaptureMovieFileOutput()
     var recordButton: UIButton!
     var libraryButton: UIButton!
@@ -83,11 +83,8 @@ class MovieCaptureViewController: UIViewController, AVCaptureFileOutputRecording
     @objc func onClickRecordButton(sender: UIButton) {
         if !isRecording {
             // 録画開始
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-            let documentsDirectory = paths[0] as String
-            let filePath : String? = "\(documentsDirectory)/temp.mp4"
-            let fileURL : NSURL = NSURL(fileURLWithPath: filePath!)
-            fileOutput.startRecording(to: fileURL as URL, recordingDelegate: self)
+            let fileURL = Const.getTemporaryMoviePath()
+            fileOutput.startRecording(to: fileURL, recordingDelegate: self)
 
             isRecording = true
             changeButtonColor(target: recordButton, color: UIColor.red)
@@ -99,10 +96,6 @@ class MovieCaptureViewController: UIViewController, AVCaptureFileOutputRecording
             changeButtonColor(target: recordButton, color: UIColor.gray)
             recordButton.setTitle("録画開始", for: .normal)
         }
-    }
-
-    @objc func onClickLibraryButton(sender: UIButton) {
-        self.performSegue(withIdentifier: "toMovieLibrary", sender: nil)
     }
 
     func changeButtonColor(target: UIButton, color: UIColor) {
@@ -118,6 +111,27 @@ class MovieCaptureViewController: UIViewController, AVCaptureFileOutputRecording
                 print("Video is saved!")
             }
         }
+    }
+    
+    @objc func onClickLibraryButton(sender: UIButton) {
+        self.performSegue(withIdentifier: "toMovieLibrary", sender: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextView = segue.destination as! MovieUploadViewController
+        nextView.delegate = self
+    }
+
+    /// ライブラリで選択された時のコールバック
+    ///
+    /// - Parameter path: 保存されたパス
+    func onSelected(path: String) {
+
+    }
+    
+    /// ライブラリから選択されずに戻ったときのコールバック
+    func onBack() {
+
     }
 
     override func didReceiveMemoryWarning() {

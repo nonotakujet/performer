@@ -49,6 +49,7 @@ class MovieViewController: UIViewController, ButtonTappedDelegate, AVAudioPlayer
         super.viewDidLoad()
         let path = String(format: "%@/%@/movies/%@.m3u8", Const.BASE_URL, movieFileName, movieFileName)
         let url = URL(fileURLWithPath: path)
+
         let asset = AVURLAsset(url: url) // .m3u8 file
         let playerItem = AVPlayerItem(asset: asset)
 

@@ -53,7 +53,9 @@ class MovieEditViewController: UIViewController, AVAudioPlayerDelegate  {
 
         // backボタン
         backButton.addTarget(self, action: #selector(self.onBackButtonClick), for: UIControlEvents.touchUpInside)
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         videoPlayer.play()
     }
 
@@ -64,6 +66,8 @@ class MovieEditViewController: UIViewController, AVAudioPlayerDelegate  {
     
     /// 次へボタンが押された時のcallback.
     @objc func onClickNextButton(sender: UIButton) {
+        videoPlayer.pause()
+        self.performSegue(withIdentifier: "toMovieUpload", sender: nil)
     }
     
     /// backボタンが押された時のcallback.

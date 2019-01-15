@@ -358,11 +358,72 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="Q9i-EJ-lSQ" id="Nqu-Wc-Jrb"/>
+                        <segue destination="iQD-6o-6Qy" kind="show" identifier="toMovieUpload" id="bnB-Sm-vRJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nlM-MQ-j4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1948" y="452"/>
+        </scene>
+        <!--Movie Upload View Controller-->
+        <scene sceneID="suO-xn-E21">
+            <objects>
+                <viewController id="iQD-6o-6Qy" customClass="MovieUploadViewController" customModule="performer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lg7-Ya-08N"/>
+                        <viewControllerLayoutGuide type="bottom" id="QIo-Rt-YKA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F2q-VF-LUy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投稿" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsH-n9-0YA">
+                                <rect key="frame" x="181.66666666666666" y="40" width="51" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqB-20-dET" userLabel="BackButton">
+                                <rect key="frame" x="30" y="30" width="30" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="×">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jF-LR-uFV">
+                                <rect key="frame" x="57" y="320" width="300" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Fxg-qU-v1k"/>
+                                    <constraint firstAttribute="width" constant="300" id="kl7-UY-e35"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="ここでコメントとかハッシュタグとか追加します">
+                                        <attributes>
+                                            <font key="NSFont" size="23" name=".HiraKakuInterface-W3"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4jF-LR-uFV" firstAttribute="top" secondItem="lg7-Ya-08N" secondAttribute="bottom" constant="300" id="3yh-TS-P4Q"/>
+                            <constraint firstItem="xqB-20-dET" firstAttribute="leading" secondItem="F2q-VF-LUy" secondAttribute="leadingMargin" constant="10" id="6G3-nX-zFo"/>
+                            <constraint firstItem="xqB-20-dET" firstAttribute="top" secondItem="lg7-Ya-08N" secondAttribute="bottom" constant="10" id="XHl-ZI-TrS"/>
+                            <constraint firstItem="lsH-n9-0YA" firstAttribute="top" secondItem="lg7-Ya-08N" secondAttribute="bottom" constant="20" id="bvJ-Fu-moi"/>
+                            <constraint firstItem="lsH-n9-0YA" firstAttribute="centerX" secondItem="F2q-VF-LUy" secondAttribute="centerX" id="pfO-AA-OiL"/>
+                            <constraint firstItem="4jF-LR-uFV" firstAttribute="centerX" secondItem="F2q-VF-LUy" secondAttribute="centerX" id="q1i-yj-sjs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="xqB-20-dET" id="9Kt-qr-M6A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ae2-tU-5ey" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2735" y="447"/>
         </scene>
     </scenes>
     <resources>

@@ -41,19 +41,21 @@
                                 </state>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6Z-Ej-hLh" userLabel="ReactionViewRoot">
-                                <rect key="frame" x="17" y="571" width="380" height="128"/>
+                                <rect key="frame" x="37" y="596" width="340" height="90"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="340" id="9TG-Tr-gMh"/>
+                                    <constraint firstAttribute="height" constant="90" id="o2Z-R9-Vz4"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Z0b-vT-RB1" firstAttribute="top" secondItem="f6Z-Ej-hLh" secondAttribute="bottom" constant="50" id="Abs-e3-QJ7"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="AvL-ZB-5HC"/>
-                            <constraint firstItem="f6Z-Ej-hLh" firstAttribute="top" secondItem="2vv-cO-6dE" secondAttribute="top" constant="571" id="RAi-uq-JC3"/>
+                            <constraint firstItem="f6Z-Ej-hLh" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="G30-BZ-cxl"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="top" secondItem="SON-kf-zNN" secondAttribute="bottom" constant="581" id="W3R-6g-9Au"/>
-                            <constraint firstItem="f6Z-Ej-hLh" firstAttribute="leading" secondItem="2vv-cO-6dE" secondAttribute="leading" constant="17" id="dkb-5y-uf1"/>
-                            <constraint firstItem="f6Z-Ej-hLh" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="oMt-KX-L1m"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="qjL-G7-3SQ"/>
-                            <constraint firstItem="Z0b-vT-RB1" firstAttribute="top" secondItem="f6Z-Ej-hLh" secondAttribute="bottom" constant="37" id="wAQ-SX-rpf"/>
                             <constraint firstItem="X8O-4l-cho" firstAttribute="centerX" secondItem="2vv-cO-6dE" secondAttribute="centerX" id="yQ9-go-alu"/>
                         </constraints>
                     </view>
@@ -72,37 +74,74 @@
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Wyq-aP-kon" userLabel="Reaction View">
                             <rect key="frame" x="12" y="13" width="316" height="64"/>
                             <subviews>
-                                <button opaque="NO" tag="1" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIE-XB-Ihq">
+                                <button opaque="NO" tag="1" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PIE-XB-Ihq">
                                     <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="64" id="h8d-42-Yuo"/>
                                         <constraint firstAttribute="height" constant="64" id="r9c-sB-bwK"/>
                                     </constraints>
-                                    <state key="normal" title="Button" image="onpu.png"/>
+                                    <state key="normal">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="⬆️">
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="46" name="AppleColorEmoji"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                    </state>
                                 </button>
-                                <button opaque="NO" tag="2" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-9w-VqO">
+                                <button opaque="NO" tag="2" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-9w-VqO">
                                     <rect key="frame" x="84" y="0.0" width="64" height="64"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="64" id="7D7-OY-Rsm"/>
                                         <constraint firstAttribute="height" constant="64" id="u1q-94-U0J"/>
                                     </constraints>
-                                    <state key="normal" title="Button" image="onpu2.png"/>
+                                    <state key="normal">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="👏">
+                                                <attributes>
+                                                    <font key="NSFont" size="46" name="AppleColorEmoji"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                    </state>
                                 </button>
-                                <button opaque="NO" tag="3" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-9J-MfZ">
+                                <button opaque="NO" tag="3" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-9J-MfZ">
                                     <rect key="frame" x="168" y="0.0" width="64" height="64"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="64" id="86V-E9-1GK"/>
                                         <constraint firstAttribute="width" constant="64" id="ZCB-S2-ojr"/>
                                     </constraints>
-                                    <state key="normal" title="Button" image="fire.png"/>
+                                    <state key="normal">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="😲">
+                                                <attributes>
+                                                    <font key="NSFont" size="46" name="AppleColorEmoji"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                    </state>
                                 </button>
-                                <button opaque="NO" tag="4" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmI-IO-2Th">
+                                <button opaque="NO" tag="4" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VmI-IO-2Th">
                                     <rect key="frame" x="252" y="0.0" width="64" height="64"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="64" id="SRc-4q-Uwu"/>
                                         <constraint firstAttribute="width" constant="64" id="UcA-NZ-vBO"/>
                                     </constraints>
-                                    <state key="normal" title="Button" image="good.png"/>
+                                    <state key="normal">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="😐">
+                                                <attributes>
+                                                    <font key="NSFont" size="46" name="AppleColorEmoji"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                    </state>
                                 </button>
                             </subviews>
                         </stackView>
@@ -429,9 +468,5 @@
     </scenes>
     <resources>
         <image name="check.png" width="64" height="64"/>
-        <image name="fire.png" width="128" height="128"/>
-        <image name="good.png" width="128" height="128"/>
-        <image name="onpu.png" width="128" height="128"/>
-        <image name="onpu2.png" width="128" height="128"/>
     </resources>
 </document>
